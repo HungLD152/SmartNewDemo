@@ -18,7 +18,7 @@
         <ResourceDictionary>
             <DataTemplate x:Key="validImageTemplate">
                 <ViewCell>
-                    <yummy:PancakeView BackgroundGradientStartColor="{DynamicResource backgroundColor}" BackgroundGradientEndColor="{DynamicResource backgroundColor}" BackgroundGradientAngle="10" Margin="0,5,0,5" CornerRadius="5" IsClippedToBounds="true" HorizontalOptions="FillAndExpand">
+                    <yummy:PancakeView BackgroundGradientStartColor="lavenderblush" BackgroundGradientEndColor="lavenderblush" BackgroundGradientAngle="10" Margin="0,5,0,5" CornerRadius="5" IsClippedToBounds="true" HorizontalOptions="FillAndExpand">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <StackLayout HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding Title}" Style="{DynamicResource labelStyle}" TextColor="{DynamicResource textColor}" LineBreakMode="WordWrap" />
@@ -30,7 +30,7 @@
             </DataTemplate>
             <DataTemplate x:Key="invalidImageTemplate">
                 <ViewCell>
-                    <yummy:PancakeView BackgroundGradientStartColor="{DynamicResource backgroundColor}" BackgroundGradientEndColor="{DynamicResource backgroundColor}" BackgroundGradientAngle="10" Margin="0,5,0,5" CornerRadius="5" IsClippedToBounds="true" HorizontalOptions="FillAndExpand">
+                    <yummy:PancakeView BackgroundGradientStartColor="azure" BackgroundGradientEndColor="azure" BackgroundGradientAngle="10" Margin="0,5,0,5" CornerRadius="5" IsClippedToBounds="true" HorizontalOptions="FillAndExpand">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <StackLayout>
                                 <Label Text="{Binding Title}" Style="{DynamicResource labelStyle}" TextColor="{DynamicResource textColor}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>

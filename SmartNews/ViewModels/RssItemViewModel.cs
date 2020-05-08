@@ -124,15 +124,12 @@ namespace SmartNews.ViewModels
                         Stream stream = request.EndGetResponse(args).GetResponseStream();
                         StreamReader reader = new StreamReader(stream);
                         string xml = reader.ReadToEnd();
-
                         // Parse XML to extract data from RSS feed.
                         XDocument doc = XDocument.Parse(xml);
                         XElement rss = doc.Element(XName.Get("rss"));
                         XElement channel = rss.Element(XName.Get("channel"));
-
                         // Set Title property.
                         Title = channel.Element(XName.Get("title")).Value;
-
                         // Set Items property.
                         List<RSSFeedItem> list =
                         channel.Elements(XName.Get("item")).Select((XElement element) =>
