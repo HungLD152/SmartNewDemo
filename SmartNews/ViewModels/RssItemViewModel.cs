@@ -153,7 +153,7 @@ namespace SmartNews.ViewModels
                             }
                             else
                             {
-                                result.Thumbnail = "";
+                                result.Thumbnail = "https://joebalestrino.com/wp-content/uploads/2019/02/Marketplace-Lending-News.jpg";
                             }
                             #endregion
                             return result;
