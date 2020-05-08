@@ -48,7 +48,7 @@
     </ContentPage.Resources>
     <StackLayout x:Name="ShowData" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource backgroundColor}">
         <!--<tabview:SettingView/>-->
-        <StackLayout Orientation="Horizontal" Margin="0,5,10,-5">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="0,5,10,-5">
             <SearchBar x:Name="searchBar" Text="{Binding searchText}"
                         Placeholder="Search items..."
                         TextColor="{DynamicResource textColor}"
@@ -57,13 +57,13 @@
                         PlaceholderColor="{DynamicResource textColor}"
                         BackgroundColor="{DynamicResource backgroundColor}"
                         CancelButtonColor="{DynamicResource textColor}"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="StartAndExpand"
                         VerticalOptions="StartAndExpand"
                         FontAttributes="Italic"
-                        WidthRequest="380"
+                        WidthRequest="300"
                         TextChanged="OnTextChanged"
                         SearchButtonPressed="OnSearchButtonPressed"/>
-            <ImageButton Source="settingHome.png" WidthRequest="25" Clicked="OnSettingButtonPressed" HorizontalOptions="EndAndExpand" Margin="0,0,5,0"/>
+            <ImageButton Source="settingHome.png" WidthRequest="25" Clicked="OnSettingButtonPressed" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,5,0"/>
         </StackLayout>
         <tabview:ControlTabBar x:Name="TabBar" ItemsSource="{Binding ItemTabBar}" ItemSelected="{Binding SelectedItem}"/>
         <ListView x:Name="listView" BackgroundColor="{DynamicResource backgroundColor}"
