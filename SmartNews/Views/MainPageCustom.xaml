@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartNews.Views.MainPageCustom"
+             xmlns:tabview="clr-namespace:SmartNews.Views"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:SmartNews.ViewModels"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             NavigationPage.HasNavigationBar="False"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 20, 0, 0" />
+            <On Platform="Android, UWP" Value="0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="validImageTemplate">
+                <ViewCell>
+                    <yummy:PancakeView BackgroundGradientStartColor="{DynamicResource backgroundColor}" BackgroundGradientEndColor="{DynamicResource backgroundColor}" BackgroundGradientAngle="10" Margin="0,5,0,5" CornerRadius="5" IsClippedToBounds="true" HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Title}" Style="{DynamicResource labelStyle}" TextColor="{DynamicResource textColor}" LineBreakMode="WordWrap" />
+                                <Label Text="{Binding DecoPubDate}" TextColor="Gray" HorizontalOptions="EndAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                    </yummy:PancakeView>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="invalidImageTemplate">
+                <ViewCell>
+                    <yummy:PancakeView BackgroundGradientStartColor="{DynamicResource backgroundColor}" BackgroundGradientEndColor="{DynamicResource backgroundColor}" BackgroundGradientAngle="10" Margin="0,5,0,5" CornerRadius="5" IsClippedToBounds="true" HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout>
+                                <Label Text="{Binding Title}" Style="{DynamicResource labelStyle}" TextColor="{DynamicResource textColor}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding DecoPubDate}" TextColor="Gray" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <Image Source="{Binding Thumbnail}" WidthRequest="150" HeightRequest="120" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </yummy:PancakeView>
+                </ViewCell>
+            </DataTemplate>
+            <local:RSSFeedTemplateSelector x:Key="rssFeedTemplateSelector"
+                   ValidTemplate="{StaticResource validImageTemplate}"
+                   InvalidTemplate="{StaticResource invalidImageTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout x:Name="ShowData" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource backgroundColor}">
+        <!--<tabview:SettingView/>-->
+        <StackLayout Orientation="Horizontal" Margin="0,5,10,-5">
+            <SearchBar x:Name="searchBar" Text="{Binding searchText}"
+                        Placeholder="Search items..."
+                        TextColor="{DynamicResource textColor}"
+                        FontSize="{DynamicResource InputFontsize}"
+                        FontFamily="{DynamicResource fontFamily}"
+                        PlaceholderColor="{DynamicResource textColor}"
+                        BackgroundColor="{DynamicResource backgroundColor}"
+                        CancelButtonColor="{DynamicResource textColor}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="StartAndExpand"
+                        FontAttributes="Italic"
+                        WidthRequest="380"
+                        TextChanged="OnTextChanged"
+                        SearchButtonPressed="OnSearchButtonPressed"/>
+            <ImageButton Source="settingHome.png" WidthRequest="25" Clicked="OnSettingButtonPressed" HorizontalOptions="EndAndExpand" Margin="0,0,5,0"/>
+        </StackLayout>
+        <tabview:ControlTabBar x:Name="TabBar" ItemsSource="{Binding ItemTabBar}" ItemSelected="{Binding SelectedItem}"/>
+        <ListView x:Name="listView" BackgroundColor="{DynamicResource backgroundColor}"
+                            ItemsSource="{Binding Items}"
+                            IsPullToRefreshEnabled="True"
+                            ItemSelected="OnListViewItemSelected"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            RefreshCommand="{Binding RefreshCommand}"
+                            IsRefreshing="{Binding IsRefreshing}"
+                            ItemTemplate="{StaticResource rssFeedTemplateSelector}"
+                            HasUnevenRows="True"/>
+    </StackLayout>
+</ContentPage>
