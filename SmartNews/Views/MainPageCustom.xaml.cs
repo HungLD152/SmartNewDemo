@@ -12,6 +12,7 @@ namespace SmartNews.Views
     {
         private RssItemViewModel viewModel = new RssItemViewModel();
         RSSFeedItem rssItem;
+        public bool isRowEven;
         public MainPageCustom()
         {
             InitializeComponent();
@@ -69,6 +70,7 @@ namespace SmartNews.Views
             viewModel.LoadRssFeed();
         }
 
+        
         void OnTextChanged(object sender, EventArgs e)
         {
             viewModel.LoadRssFeed();
@@ -78,6 +80,22 @@ namespace SmartNews.Views
         {
             Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SettingPage());
         }
+        //private void ViewCell_Appearing(object sender, EventArgs e)
+        //{
+        //    var viewCell = (ViewCell)sender;
+        //    if (viewCell.View != null && viewCell.View.BackgroundColor == default(Color))
+        //    {
+        //        if (this.isRowEven)
+        //        {
+        //            viewCell.View.BackgroundColor = Color.Gray;
+        //        }
+        //        else
+        //        {
+        //            viewCell.View.BackgroundColor = Color.WhiteSmoke;
+        //        }
+        //    }
+        //    this.isRowEven = !this.isRowEven;
+        //}
     }
 }
 

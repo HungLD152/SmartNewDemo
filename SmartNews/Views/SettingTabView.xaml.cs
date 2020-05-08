@@ -3,6 +3,7 @@ using Syncfusion.DataSource.Extensions;
 using Syncfusion.ListView.XForms;
 using Syncfusion.ListView.XForms.Control.Helpers;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
@@ -45,6 +46,8 @@ namespace SmartNews.Views
             {
                 //Down direction 
                 viewModel.heightImages = 150 - e.ScrollY;
+                //scrollview.ScrollToAsync((viewModel.ItemTabBar)[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
+                //listView.ScrollTo((viewModel.ItemTabBar)[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, false);
             }
             previousOffset = e.ScrollY;
         }
