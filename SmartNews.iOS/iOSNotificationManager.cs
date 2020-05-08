@@ -14,6 +14,11 @@ namespace SmartNews.iOS
 {
     class iOSNotificationManager : INotificationManager
     {
+        public void PushNotification(string mess)
+        {
+            
+        }
+
         public void ReceiveNotification(string title, string message)
         {
             new iOSNotificationReceiver().RegisterNotification(title, message);
