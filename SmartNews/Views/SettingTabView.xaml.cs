@@ -44,9 +44,10 @@ namespace SmartNews.Views
                 return;
             if (previousOffset >= e.ScrollY)
             {
-                if (e.ScrollY <= minHeight)
+                if (viewModel.heightImages - e.ScrollY >= minHeight && viewModel.heightImages - e.ScrollY <= maxHeight)
                 {
                     viewModel.heightImages = 150 - e.ScrollY;
+                    //viewModel.heightImages = (150 - e.ScrollY) > maxHeight ? (150 - e.ScrollY) : maxHeight;
                 }
                 // Up direction
                 try
@@ -65,7 +66,7 @@ namespace SmartNews.Views
             else
             {
                 //Down direction 
-                if (e.ScrollY <= maxHeight)
+                if (viewModel.heightImages - e.ScrollY >= minHeight && viewModel.heightImages - e.ScrollY <= maxHeight)
                 {
                     viewModel.heightImages = (150 - e.ScrollY) > minHeight ? (150 - e.ScrollY) : minHeight;
                 }
@@ -88,7 +89,7 @@ namespace SmartNews.Views
                 }
             }
             Console.WriteLine("sizeScrollContent: " + sizeScrollContent);
-            Console.WriteLine("size: " + size);
+            Console.WriteLine("viewModel.heightImages - e.ScrollY : " + (viewModel.heightImages - e.ScrollY));
             Console.WriteLine("scrollOffet: " + scrollOffet);
             Console.WriteLine("ScrollY: " + e.ScrollY);
             previousOffset = e.ScrollY;
