@@ -9,7 +9,7 @@
              x:Class="SmartNews.Views.SettingTabView">
     <StackLayout>
         <StackLayout x:Name="layoutHeader" HeightRequest="{Binding heightImages}" MinimumHeightRequest="50">
-            <Image x:Name="Images" Source="Images.png" HorizontalOptions="Center" WidthRequest="{Binding heightImages}" HeightRequest="{Binding heightImages}"/>
+            <Image x:Name="Images" Source="Images.jpg" HorizontalOptions="Center" WidthRequest="{Binding heightImages}" HeightRequest="{Binding heightImages}"/>
         </StackLayout>
         <StackLayout>
             <syncfusion:SfListView x:Name="listView"
