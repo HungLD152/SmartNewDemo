@@ -40,6 +40,7 @@ namespace SmartNews.Views
             var scrollY = e.ScrollY;
             if (scrollY == 0)
                 return;
+            //if (previousOffset >= e.ScrollY)
             if (previousOffset >= e.ScrollY)
             {
                 if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
@@ -51,7 +52,8 @@ namespace SmartNews.Views
                     var firstItem = listView.DataSource.DisplayItems.FirstOrDefault();
                     if (firstItem != null)
                     {
-                        scrollview.ScrollToAsync(listView, Xamarin.Forms.ScrollToPosition.Start, true);
+                        //scrollview.ScrollToAsync(0, (scrollview.ContentSize.Height - scrollview.Height), true);
+                        //scrollview.ScrollToAsync(listView, Xamarin.Forms.ScrollToPosition.Start, true);
                     }
                 }
                 catch (Exception ex)
@@ -64,7 +66,8 @@ namespace SmartNews.Views
                 //Down direction 
                 if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
                 {
-                    viewModel.heightImages = (150 - scrollY) > minHeight ? (150 - scrollY) : minHeight;
+                    viewModel.heightImages = 150 - scrollY;
+                    //viewModel.heightImages = (150 - scrollY) > minHeight ? (150 - scrollY) : minHeight;
                 }
 
                 //int index = listView.DataSource.DisplayItems.IndexOf(viewModel.ItemTabBar[0]);
@@ -75,7 +78,8 @@ namespace SmartNews.Views
                     var firstItem = listView.DataSource.DisplayItems.FirstOrDefault();
                     if (firstItem != null)
                     {
-                        scrollview.ScrollToAsync(listView, Xamarin.Forms.ScrollToPosition.Start, true);
+                        //scrollview.ScrollToAsync(listView, Xamarin.Forms.ScrollToPosition.Start, true);
+                        //scrollview.ScrollToAsync(0, (scrollview.ContentSize.Height - scrollview.Height), true);
                         //listView.ScrollTo(firstItem, Syncfusion.ListView.XForms.ScrollToPosition.Start, false);
                     }
                 }
@@ -87,7 +91,7 @@ namespace SmartNews.Views
             Console.WriteLine("viewModel.heightImages - e.ScrollY : " + (viewModel.heightImages - scrollY));
             Console.WriteLine("scrollOffet: " + scrollOffet);
             Console.WriteLine("ScrollY: " + scrollY);
-            previousOffset = e.ScrollY;
+            previousOffset = scrollY;
         }
 
         private void ListView_ItemDragging(object sender, ItemDraggingEventArgs e)
