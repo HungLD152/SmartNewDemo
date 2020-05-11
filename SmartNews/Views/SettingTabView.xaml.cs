@@ -37,19 +37,15 @@ namespace SmartNews.Views
             scrollOffet = (double)container.GetType().GetRuntimeProperties().First(p => p.Name == "ScrollOffset").GetValue(container);
             double minHeight = 50;
             double maxHeight = 150;
-            var sizeScrollContent = scrollview.ContentSize.Height;
-            var size = scrollview.Height;
-            double sizeToUp = sizeScrollContent - size;
+            var scrollY = e.ScrollY;
             if (e.ScrollY == 0)
                 return;
             if (previousOffset >= e.ScrollY)
             {
-                if (viewModel.heightImages - e.ScrollY >= minHeight && viewModel.heightImages - e.ScrollY <= maxHeight)
+                if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
                 {
                     viewModel.heightImages = 150 - e.ScrollY;
-                    //viewModel.heightImages = (150 - e.ScrollY) > maxHeight ? (150 - e.ScrollY) : maxHeight;
                 }
-                // Up direction
                 try
                 {
                     var firstItem = listView.DataSource.DisplayItems.FirstOrDefault();
@@ -66,9 +62,9 @@ namespace SmartNews.Views
             else
             {
                 //Down direction 
-                if (viewModel.heightImages - e.ScrollY >= minHeight && viewModel.heightImages - e.ScrollY <= maxHeight)
+                if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
                 {
-                    viewModel.heightImages = (150 - e.ScrollY) > minHeight ? (150 - e.ScrollY) : minHeight;
+                    viewModel.heightImages = (150 - scrollY) > minHeight ? (150 - scrollY) : minHeight;
                 }
 
                 //int index = listView.DataSource.DisplayItems.IndexOf(viewModel.ItemTabBar[0]);
@@ -88,10 +84,9 @@ namespace SmartNews.Views
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
                 }
             }
-            Console.WriteLine("sizeScrollContent: " + sizeScrollContent);
-            Console.WriteLine("viewModel.heightImages - e.ScrollY : " + (viewModel.heightImages - e.ScrollY));
+            Console.WriteLine("viewModel.heightImages - e.ScrollY : " + (viewModel.heightImages - scrollY));
             Console.WriteLine("scrollOffet: " + scrollOffet);
-            Console.WriteLine("ScrollY: " + e.ScrollY);
+            Console.WriteLine("ScrollY: " + scrollY);
             previousOffset = e.ScrollY;
         }
 
