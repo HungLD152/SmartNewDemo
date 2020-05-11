@@ -38,13 +38,13 @@ namespace SmartNews.Views
             double minHeight = 50;
             double maxHeight = 150;
             var scrollY = e.ScrollY;
-            if (e.ScrollY == 0)
+            if (scrollY == 0)
                 return;
             if (previousOffset >= e.ScrollY)
             {
                 if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
                 {
-                    viewModel.heightImages = 150 - e.ScrollY;
+                    viewModel.heightImages = 150 - scrollY;
                 }
                 try
                 {
