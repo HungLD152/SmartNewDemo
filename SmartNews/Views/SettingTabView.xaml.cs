@@ -35,19 +35,26 @@ namespace SmartNews.Views
         private void Scrollview_Scrolled(object sender, ScrolledEventArgs e)
         {
             scrollOffet = (double)container.GetType().GetRuntimeProperties().First(p => p.Name == "ScrollOffset").GetValue(container);
-            var sizeScroll = scrollview.ContentSize.Height;
+            double minHeight = 50;
+            double maxHeight = 150;
+            var sizeScrollContent = scrollview.ContentSize.Height;
+            var size = scrollview.Height;
+            double sizeToUp = sizeScrollContent - size;
             if (e.ScrollY == 0)
                 return;
             if (previousOffset >= e.ScrollY)
             {
-                // Up direction  
-                viewModel.heightImages = 150 - e.ScrollY;
+                if (e.ScrollY <= minHeight)
+                {
+                    viewModel.heightImages = 150 - e.ScrollY;
+                }
+                // Up direction
                 try
                 {
                     var firstItem = listView.DataSource.DisplayItems.FirstOrDefault();
                     if (firstItem != null)
                     {
-                        listView.ScrollTo(firstItem, Syncfusion.ListView.XForms.ScrollToPosition.Start, false);
+                        scrollview.ScrollToAsync(listView, Xamarin.Forms.ScrollToPosition.Start, true);
                     }
                 }
                 catch (Exception ex)
@@ -58,25 +65,31 @@ namespace SmartNews.Views
             else
             {
                 //Down direction 
-                viewModel.heightImages = 150 - e.ScrollY;
+                if (e.ScrollY <= maxHeight)
+                {
+                    viewModel.heightImages = (150 - e.ScrollY) > minHeight ? (150 - e.ScrollY) : minHeight;
+                }
+
                 //int index = listView.DataSource.DisplayItems.IndexOf(viewModel.ItemTabBar[0]);
-                //listView.LayoutManager.ScrollToRowIndex(index, Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
+                //scrollview.ScrollToAsync(index, Xamarin.Forms.ScrollToPosition.Start, true);
                 try
                 {
+                    //scrollview.ScrollToAsync(0, sizeToUp, false);
                     var firstItem = listView.DataSource.DisplayItems.FirstOrDefault();
                     if (firstItem != null)
                     {
-                        listView.ScrollTo(firstItem, Syncfusion.ListView.XForms.ScrollToPosition.Start, false);
+                        scrollview.ScrollToAsync(listView, Xamarin.Forms.ScrollToPosition.Start, true);
+                        //listView.ScrollTo(firstItem, Syncfusion.ListView.XForms.ScrollToPosition.Start, false);
                     }
                 }
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
                 }
-                //scrollview.ScrollToAsync(index, Xamarin.Forms.ScrollToPosition.Start, true);
             }
-           
-            Console.WriteLine("sizeScroll: " + sizeScroll);
+            Console.WriteLine("sizeScrollContent: " + sizeScrollContent);
+            Console.WriteLine("size: " + size);
+            Console.WriteLine("scrollOffet: " + scrollOffet);
             Console.WriteLine("ScrollY: " + e.ScrollY);
             previousOffset = e.ScrollY;
         }
