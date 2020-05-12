@@ -43,9 +43,9 @@ namespace SmartNews.Views
             //if (previousOffset >= e.ScrollY)
             if (previousOffset >= e.ScrollY)
             {
-                if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
+                if (viewModel.heightImages - scrollY >= minHeight && scrollY <=10)
                 {
-                    viewModel.heightImages = 150 - scrollY;
+                    viewModel.heightImages = (150 - scrollY);
                 }
                 try
                 {
