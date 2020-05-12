@@ -14,7 +14,7 @@ namespace SmartNews
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUyMDk4QDMxMzgyZTMxMmUzME10Q1dMQ2RaREhNcHluU0RlR0tDdXkzV2pVcWVQSEc5WTNlbXZWN1dsUWc9");
             InitializeComponent();
-            MainPage = new NavigationPage(new MainPageCustom());
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

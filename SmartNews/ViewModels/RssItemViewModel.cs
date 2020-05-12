@@ -91,31 +91,6 @@ namespace SmartNews.ViewModels
                 Url = "https://soha.vn/kinh-doanh.rss",
                 ItemColor = Color.Orange
             });
-            list.Add(new TabBarItemModel()
-            {
-                TitleBar = "dantri.com.vn",
-                Url = "https://dantri.com.vn/trangchu.rss",
-                ItemColor = Color.Turquoise
-            });
-            //Add
-            list.Add(new TabBarItemModel()
-            {
-                TitleBar = "Trithuc",
-                Url = "https://trithucvn.net/feed",
-                ItemColor = Color.LightSkyBlue
-            });
-            list.Add(new TabBarItemModel()
-            {
-                TitleBar = "Cafebiz-cn",
-                Url = "https://cafebiz.vn/cong-nghe.rss",
-                ItemColor = Color.MediumOrchid
-            });
-            list.Add(new TabBarItemModel()
-            {
-                TitleBar = "Cafebiz-kd",
-                Url = "https://cafebiz.vn/cau-chuyen-kinh-doanh.rss",
-                ItemColor = Color.LightCoral
-            });
 
             return list.ToObservableCollection();
         }

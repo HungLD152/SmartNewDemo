@@ -25,10 +25,18 @@
                 FontSize="{DynamicResource InputFontsize}"
                 FontFamily="{DynamicResource fontFamily}"/>
         <Switch x:Name="checkFs" IsToggled="False" Toggled="OnToggled"  HorizontalOptions="StartAndExpand"/>
+        <StackLayout Orientation="Horizontal">
         <Button Text="Edit TabItem" Clicked="EditTabitemClick" HorizontalOptions="StartAndExpand"
+                        BackgroundColor="Red"
                         TextColor="{DynamicResource textColor}"
                         FontSize="{DynamicResource InputFontsize}"
                         FontFamily="{DynamicResource fontFamily}"/>
+         <Button Text="CategoryPage" Clicked="CategoryPageClick" HorizontalOptions="EndAndExpand"
+                        BackgroundColor="Green"
+                        TextColor="{DynamicResource textColor}"
+                        FontSize="{DynamicResource InputFontsize}"
+                        FontFamily="{DynamicResource fontFamily}"/>
+        </StackLayout>
         <StackLayout IsVisible="True">
             <Label x:Name="lblFontFamily" Text="Family"/>
             <Label x:Name="lblFontsize" Text="Size"/>

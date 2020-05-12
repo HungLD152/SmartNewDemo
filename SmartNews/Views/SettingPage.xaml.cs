@@ -82,6 +82,11 @@ namespace SmartNews.Views
             Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SettingTabView());
         }
 
+        void CategoryPageClick(object sender, EventArgs args)
+        {
+            //Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new CategoryPage());
+        }
+        
         void fontFamily_SelectedIndexChanged(object sender, EventArgs args)
         {  
             Application.Current.Resources["fontFamily"] = fontNamePiker.SelectedItem;

@@ -23,7 +23,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:SettingPage/>
+                <views:CategoryPage x:Name="CategoryItem" ItemsSource="{Binding ItemTabBar}" ItemSelected="{Binding SelectedItem}"/>
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
