@@ -43,9 +43,9 @@ namespace SmartNews.Views
             //if (previousOffset >= e.ScrollY)
             if (previousOffset >= e.ScrollY)
             {
-                if (viewModel.heightImages - scrollY >= minHeight && scrollY <=10)
+                if (viewModel.heightImages - scrollY >= minHeight && scrollY <=15)
                 {
-                    viewModel.heightImages = (150 - scrollY);
+                    viewModel.heightImages = (150 - scrollY) <= maxHeight ? (150 - scrollY) : maxHeight;
                 }
                 try
                 {
@@ -71,7 +71,6 @@ namespace SmartNews.Views
                 }
 
                 //int index = listView.DataSource.DisplayItems.IndexOf(viewModel.ItemTabBar[0]);
-                //scrollview.ScrollToAsync(index, Xamarin.Forms.ScrollToPosition.Start, true);
                 try
                 {
                     //scrollview.ScrollToAsync(0, sizeToUp, false);
@@ -89,7 +88,7 @@ namespace SmartNews.Views
                 }
             }
             Console.WriteLine("viewModel.heightImages - e.ScrollY : " + (viewModel.heightImages - scrollY));
-            Console.WriteLine("scrollOffet: " + scrollOffet);
+            Console.WriteLine("150 - scrollY: " + (150 - scrollY));
             Console.WriteLine("ScrollY: " + scrollY);
             previousOffset = scrollY;
         }
