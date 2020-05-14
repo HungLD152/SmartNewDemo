@@ -1,7 +1,9 @@
 ﻿using SmartNews.Models;
 using System;
+using Rg.Plugins.Popup.Pages;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Rg.Plugins.Popup.Extensions;
 
 namespace SmartNews.Views
 {

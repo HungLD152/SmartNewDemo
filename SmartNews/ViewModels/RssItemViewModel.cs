@@ -47,49 +47,72 @@ namespace SmartNews.ViewModels
             {
                 TitleBar = "24h.com",
                 Url = "https://cdn.24h.com.vn/upload/rss/trangchu24h.rss",
+                UrlImages = "icon-setting.png",
                 ItemColor = Color.LightCoral
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Tinhte",
                 Url = "https://tinhte.vn/rss",
+                UrlImages = "settingHome.png",
                 ItemColor = Color.Orange
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Thanhnien",
                 Url = "https://thanhnien.vn/rss/home.rss",
+                UrlImages = "icon-setting.png",
                 ItemColor = Color.Turquoise
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Trithuc",
                 Url = "https://trithucvn.net/feed",
+                UrlImages = "settingHome.png",
                 ItemColor = Color.LightSkyBlue
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Cafebiz-cn",
                 Url = "https://cafebiz.vn/cong-nghe.rss",
+                UrlImages = "icon-setting.png",
                 ItemColor = Color.MediumOrchid
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Cafebiz-kd",
                 Url = "https://cafebiz.vn/cau-chuyen-kinh-doanh.rss",
+                UrlImages = "settingHome.png",
                 ItemColor = Color.LightCoral
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Vnreview",
                 Url = "https://vnreview.vn/feed/-/rss/home",
+                UrlImages = "icon-setting.png",
                 ItemColor = Color.LightSkyBlue
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Soha",
                 Url = "https://soha.vn/kinh-doanh.rss",
+                UrlImages = "settingHome.png",
                 ItemColor = Color.Orange
+            });
+            //add--
+            list.Add(new TabBarItemModel()
+            {
+                TitleBar = "Tinhte",
+                Url = "https://tinhte.vn/rss",
+                UrlImages = "icon-setting.png",
+                ItemColor = Color.Orange
+            });
+            list.Add(new TabBarItemModel()
+            {
+                TitleBar = "Thanhnien",
+                Url = "https://thanhnien.vn/rss/home.rss",
+                UrlImages = "settingHome.png",
+                ItemColor = Color.Turquoise
             });
 
             return list.ToObservableCollection();

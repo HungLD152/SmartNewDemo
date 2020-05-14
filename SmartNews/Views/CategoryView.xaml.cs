@@ -11,5 +11,9 @@ namespace SmartNews.Views
         {
             InitializeComponent();
         }
+        private void OnCategoryTapped(object sender, EventArgs e)
+        {
+            OnCategoryItemClicked?.Invoke(this, (BindingContext as TabBarItemModel).TitleBar);
+        }
     }
 }

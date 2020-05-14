@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using SmartNews.Models;
 using Xamarin.Forms;
 
 namespace SmartNews.Views
@@ -25,15 +27,22 @@ namespace SmartNews.Views
             base.OnPropertyChanged(propertyName);
             if (propertyName == ItemsSourceProperty.PropertyName)
             {
-                Container.Children.Clear();
-                //Container2.Children.Clear();
+                ContainerLeft.Children.Clear();
+                ContainerRight.Children.Clear();
+                var ItemSourceLeft = ItemsSource.Take(5).ToList();
+                var ItemSourceRight = ItemsSource.Skip(5).Take(5).ToList();
                 if (ItemsSource?.Count > 0)
-                    foreach (var data in ItemsSource)
+                    foreach (var dataleft in ItemSourceLeft)
                     {
-                        var item = new CategoryView { BindingContext = data };
+                        var item = new CategoryView { BindingContext = dataleft };
                         item.OnCategoryItemClicked += Item_OnCategoryItemClicked;
-                        Container.Children.Add(item);
-                        //Container2.Children.Add(item);
+                        ContainerLeft.Children.Add(item);
+                    }
+                    foreach (var dataright in ItemSourceRight)
+                    {
+                        var item = new CategoryView { BindingContext = dataright };
+                        item.OnCategoryItemClicked += Item_OnCategoryItemClicked;
+                        ContainerRight.Children.Add(item);
                     }
             }
             if (propertyName == ItemsSelectedProperty.PropertyName)
@@ -43,7 +52,24 @@ namespace SmartNews.Views
         }
         private void Item_OnCategoryItemClicked(object sender, string e)
         {
-
+            PageCategory.Title = e.ToString();
+            //Console.WriteLine("Item_OnCategoryItemClicked: " + e.ToString());
+            //var senderObj = (CategoryView)sender;
+            //foreach (var itemLeft in ContainerLeft.Children)
+            //{
+            //    (itemLeft.BindingContext as TabBarItemModel).IsSelected = false;
+            //    senderObj.BackgroundColor = Color.White;
+            //}
+            //foreach (var itemRight in ContainerRight.Children)
+            //{
+            //    (itemRight.BindingContext as TabBarItemModel).IsSelected = false;
+            //    senderObj.BackgroundColor = Color.White;
+            //}
+            //(senderObj.BindingContext as TabBarItemModel).IsSelected = true;
+            //if ((senderObj.BindingContext as TabBarItemModel).IsSelected)
+            //{
+            //    senderObj.BackgroundColor = Color.Red;
+            //}
         }
         public CategoryPage()
         {

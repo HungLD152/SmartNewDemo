@@ -80,6 +80,7 @@ namespace SmartNews.Views
     {
         public string TitleBar { get; set; }
         public string Url { get; set; }
+        public string UrlImages { get; set; }
         public Color ItemColor { get; set; }
         public bool IsSelected { get; set; }
     }
