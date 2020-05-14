@@ -54,8 +54,14 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout x:Name="ShowData" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource backgroundColor}">
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="0, 10, 0, 0" />
+                <On Platform="Android, UWP" Value="0, 0" />
+            </OnPlatform>
+        </StackLayout.Padding>
         <!--<tabview:SettingView/>-->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="0,5,10,-5">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="{Binding heightImages}">
             <SearchBar x:Name="searchBar" Text="{Binding searchText}"
                         Placeholder="Search items..."
                         TextColor="{DynamicResource textColor}"
@@ -67,10 +73,10 @@
                         HorizontalOptions="StartAndExpand"
                         VerticalOptions="StartAndExpand"
                         FontAttributes="Italic"
-                        WidthRequest="300"
+                        WidthRequest="380"
                         TextChanged="OnTextChanged"
                         SearchButtonPressed="OnSearchButtonPressed"/>
-            <ImageButton Source="settingHome.png" WidthRequest="25" Clicked="OnSettingButtonPressed" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,5,0"/>
+            <ImageButton Source="settingHome.png" WidthRequest="25" Clicked="OnSettingButtonPressed" VerticalOptions="Center" Margin="0,0,10,0"/>
         </StackLayout>
         <tabview:ControlTabBar x:Name="TabBar" ItemsSource="{Binding ItemTabBar}" ItemSelected="{Binding SelectedItem}"/>
         <ListView x:Name="listView" BackgroundColor="{DynamicResource backgroundColor}"
@@ -82,6 +88,7 @@
                             RefreshCommand="{Binding RefreshCommand}"
                             IsRefreshing="{Binding IsRefreshing}"
                             ItemTemplate="{StaticResource rssFeedTemplateSelector}"
+                            Scrolled="Scrollview_Scrolled"
                             HasUnevenRows="True"/>
     </StackLayout>
 </ContentPage>

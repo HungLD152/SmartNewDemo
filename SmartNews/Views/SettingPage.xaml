@@ -31,11 +31,7 @@
                         TextColor="{DynamicResource textColor}"
                         FontSize="{DynamicResource InputFontsize}"
                         FontFamily="{DynamicResource fontFamily}"/>
-         <Button Text="CategoryPage" Clicked="CategoryPageClick" HorizontalOptions="EndAndExpand"
-                        BackgroundColor="Green"
-                        TextColor="{DynamicResource textColor}"
-                        FontSize="{DynamicResource InputFontsize}"
-                        FontFamily="{DynamicResource fontFamily}"/>
+        
         </StackLayout>
         <StackLayout IsVisible="True">
             <Label x:Name="lblFontFamily" Text="Family"/>
@@ -43,11 +39,11 @@
             <Label x:Name="IsDankmode" Text="Mode"/>
             <Label x:Name="IsTabItem" Text="TabItem"/>
         </StackLayout>
-         <!--<Button Text="Open Popup Category" Clicked="OnCategoryClick" HorizontalOptions="EndAndExpand"
-                        TextColor="{DynamicResource textColor}"
+         <Button Text="Open Popup Category" Clicked="CategoryPageClick" HorizontalOptions="CenterAndExpand"
                         BackgroundColor="Green"
+                        TextColor="{DynamicResource textColor}"
                         FontSize="{DynamicResource InputFontsize}"
-                        FontFamily="{DynamicResource fontFamily}"/>-->
+                        FontFamily="{DynamicResource fontFamily}"/>
         <StackLayout x:Name="stackLayout">
             <Editor x:Name="txtMessage" Text="Local Notifications on Adroid" 
                     BackgroundColor="{DynamicResource backgroundColor}"

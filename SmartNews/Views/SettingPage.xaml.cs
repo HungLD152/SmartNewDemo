@@ -4,6 +4,7 @@ using Rg.Plugins.Popup.Pages;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Services;
 
 namespace SmartNews.Views
 {
@@ -83,12 +84,12 @@ namespace SmartNews.Views
         {
             Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SettingTabView());
         }
-
-        void CategoryPageClick(object sender, EventArgs args)
+      
+        private async void CategoryPageClick(object sender, EventArgs e)
         {
-            //Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new CategoryPage());
+            await PopupNavigation.Instance.PushAsync(new CategoryPage());
         }
-        
+
         void fontFamily_SelectedIndexChanged(object sender, EventArgs args)
         {  
             Application.Current.Resources["fontFamily"] = fontNamePiker.SelectedItem;

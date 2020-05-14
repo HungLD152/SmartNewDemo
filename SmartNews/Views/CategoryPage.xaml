@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:categoryView = "clr-namespace:SmartNews.Views"
              x:Name="PageCategory"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             CloseWhenBackgroundIsClicked="True"
+             BackgroundClicked="CloseClick"
+                 HeightRequest="100"
              x:Class="SmartNews.Views.CategoryPage">
     <pages:PopupPage.Animation>
-        <animations:ScaleAnimation 
+        <animations:ScaleAnimation
             PositionIn="Center"
             PositionOut="Center"
-            ScaleIn="1.2"
-            ScaleOut="0.8"
-            DurationIn="400"
-            DurationOut="300"
-            EasingIn="SinOut"
-            EasingOut="SinIn"
-            HasBackgroundAnimation="True"/>
+            ScaleIn="1"
+            ScaleOut="0.7"
+            HasBackgroundAnimation="False"
+            EasingIn="BounceOut"
+            DurationIn="100"/>
     </pages:PopupPage.Animation>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,4 +27,4 @@
             <StackLayout Orientation="Vertical" Grid.Column="0" HorizontalOptions="StartAndExpand" WidthRequest="200" x:Name="ContainerLeft"/>
             <StackLayout Orientation="Vertical" Grid.Column="1" HorizontalOptions="EndAndExpand" WidthRequest="200" x:Name="ContainerRight"/>
     </Grid>
-</ContentPage>
+</pages:PopupPage>

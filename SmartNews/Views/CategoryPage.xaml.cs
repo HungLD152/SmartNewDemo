@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using SmartNews.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SmartNews.Views
 {
-    public partial class CategoryPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CategoryPage : PopupPage
     {
         public static BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList<TabBarItemModel>), typeof(ControlTabBar), null, BindingMode.TwoWay);
         public static BindableProperty ItemsSelectedProperty = BindableProperty.Create(nameof(ItemSelected), typeof(object), typeof(ControlTabBar), null, BindingMode.TwoWay);
@@ -70,6 +74,10 @@ namespace SmartNews.Views
             //{
             //    senderObj.BackgroundColor = Color.Red;
             //}
+        }
+        private async void CloseClick(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
         }
         public CategoryPage()
         {

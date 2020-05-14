@@ -12,7 +12,8 @@ namespace SmartNews.Views
     {
         private RssItemViewModel viewModel = new RssItemViewModel();
         RSSFeedItem rssItem;
-        public bool isRowEven;
+        double scrollOffet;
+        double previousOffset;
         public MainPageCustom()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace SmartNews.Views
             BindingContext = viewModel;
             setting.UpdateStyleItem();
             settingTabbar.UpdateSettingItem();
+            viewModel.heightImages = 40;
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey("TabItem"))
             {
                 if (Convert.ToBoolean(Xamarin.Forms.Application.Current.Properties["TabItem"].ToString()))
@@ -70,7 +72,7 @@ namespace SmartNews.Views
             viewModel.LoadRssFeed();
         }
 
-        
+
         void OnTextChanged(object sender, EventArgs e)
         {
             viewModel.LoadRssFeed();
@@ -80,22 +82,41 @@ namespace SmartNews.Views
         {
             Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new SettingPage());
         }
-        //private void ViewCell_Appearing(object sender, EventArgs e)
-        //{
-        //    var viewCell = (ViewCell)sender;
-        //    if (viewCell.View != null && viewCell.View.BackgroundColor == default(Color))
-        //    {
-        //        if (this.isRowEven)
-        //        {
-        //            viewCell.View.BackgroundColor = Color.Gray;
-        //        }
-        //        else
-        //        {
-        //            viewCell.View.BackgroundColor = Color.WhiteSmoke;
-        //        }
-        //    }
-        //    this.isRowEven = !this.isRowEven;
-        //}
+
+        private void Scrollview_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            var senderObj = sender as Xamarin.Forms.ScrollView;
+            double minHeight = 0;
+            double maxHeight = 40;
+            var scrollY = e.ScrollY;
+            bool checkToTop = false;
+            //if (scrollY == 0)
+            //    return;
+            if (previousOffset >= scrollY)
+            {
+                if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
+                {
+                    viewModel.heightImages -= scrollY;
+                    //listView.ScrollTo(viewModel.Items[0], ScrollToPosition.Start, true);
+                }
+            }
+            else
+            {
+                checkToTop = true;
+                //Down direction 
+                if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
+                {
+                    viewModel.heightImages -= scrollY;
+                    //senderObj.ScrollToAsync(viewModel.Items[0], ScrollToPosition.Start, true);
+                }
+            }
+            if (checkToTop)
+            {
+                checkToTop = false;
+
+            }
+            previousOffset = scrollY;
+        }
     }
 }
 

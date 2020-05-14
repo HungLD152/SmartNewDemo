@@ -16,7 +16,7 @@
                 <views:MainPageCustom/>
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Setting" BackgroundColor="Red">
+        <NavigationPage Title="Menu" BackgroundColor="Red">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="icon-setting.png" />
