@@ -88,7 +88,6 @@
                             RefreshCommand="{Binding RefreshCommand}"
                             IsRefreshing="{Binding IsRefreshing}"
                             ItemTemplate="{StaticResource rssFeedTemplateSelector}"
-                            Scrolled="Scrollview_Scrolled"
                             HasUnevenRows="True"/>
     </StackLayout>
 </ContentPage>

@@ -85,7 +85,7 @@ namespace SmartNews.Views
 
         private void Scrollview_Scrolled(object sender, ScrolledEventArgs e)
         {
-            var senderObj = sender as Xamarin.Forms.ScrollView;
+            var senderObj = sender as Xamarin.Forms.ListView;
             double minHeight = 0;
             double maxHeight = 40;
             var scrollY = e.ScrollY;
@@ -97,7 +97,7 @@ namespace SmartNews.Views
                 if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
                 {
                     viewModel.heightImages -= scrollY;
-                    //listView.ScrollTo(viewModel.Items[0], ScrollToPosition.Start, true);
+                    //senderObj.ScrollTo(viewModel.Items[0], ScrollToPosition.Start, true);
                 }
             }
             else
@@ -107,7 +107,7 @@ namespace SmartNews.Views
                 if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
                 {
                     viewModel.heightImages -= scrollY;
-                    //senderObj.ScrollToAsync(viewModel.Items[0], ScrollToPosition.Start, true);
+                    //senderObj.ScrollTo(viewModel.Items[0], ScrollToPosition.Start, true);
                 }
             }
             if (checkToTop)
