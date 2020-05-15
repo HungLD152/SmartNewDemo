@@ -4,10 +4,12 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Xml;
 using System.Xml.Linq;
+using Newtonsoft.Json;
 using SmartNews.Models;
 using SmartNews.Utils;
 using SmartNews.Views;
@@ -24,6 +26,7 @@ namespace SmartNews.ViewModels
         public double heightImages { get; set; }
         public ObservableCollection<RSSFeedItem> Items { get; set; } = new ObservableCollection<RSSFeedItem>();
         public ObservableCollection<TabBarItemModel> ItemTabBar => GetTabBarItemModel();
+        public ObservableCollection<TabBarItemModel> ItemCategory { get; set; }
         bool isRefreshing;
 
         public RssItemViewModel()
@@ -37,7 +40,14 @@ namespace SmartNews.ViewModels
                 {
                     return !IsRefreshing;
                 });
+            GetDataTabItem();
+        }
 
+        public void GetDataTabItem()
+        {
+            var data = LoadResourceText.GetJsonData("DataTabItem.json");
+            var result = JsonConvert.DeserializeObject<List<TabBarItemModel>>(data);
+            ItemCategory = new ObservableCollection<TabBarItemModel>(result);
         }
 
         public ObservableCollection<TabBarItemModel> GetTabBarItemModel()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using SmartNews.Models;
 using Xamarin.Forms;
 
 namespace SmartNews.Views

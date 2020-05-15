@@ -1,0 +1,64 @@
+﻿[
+    {
+        "TitleBar": "24h-Tin trong ngày",
+        "Url": "https://cdn.24h.com.vn/upload/rss/tintuctrongngay.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "CafeBiz",
+        "Url": "https://cafebiz.vn/trang-chu.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "CafeBiz - Thời sự",
+        "Url": "https://cafebiz.vn/thoi-su.rss",
+        "UrlImages": "settingHome.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "CafeBiz - Kinh tế",
+        "Url": "https://cafebiz.vn/kinh-te-vi-mo.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "CafeBiz- Kinh doanh",
+        "Url": "https://cafebiz.vn/cau-chuyen-kinh-doanh.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "CafeBiz - Sống",
+        "Url": "https://cafebiz.vn/song.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "Tinh tế",
+        "Url": "https://tinhte.vn/rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "Gamek",
+        "Url": "https://gamek.vn/trang-chu.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "Gamek-MMO",
+        "Url": "https://gamek.vn/rss.chn",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    },
+    {
+        "TitleBar": "Gamek-Mobile",
+        "Url": "https://gamek.vn/mobile-social.rss",
+        "UrlImages": "icon-setting.png",
+        "IsSelected": false
+    }
+
+]
+

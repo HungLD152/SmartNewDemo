@@ -113,7 +113,7 @@ namespace SmartNews.Views
             if (checkToTop)
             {
                 checkToTop = false;
-
+                //senderObj.ScrollToAsync(viewModel.Items[0], ScrollToPosition.Start, true);
             }
             previousOffset = scrollY;
         }

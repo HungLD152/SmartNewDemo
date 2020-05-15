@@ -14,8 +14,8 @@ namespace SmartNews.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoryPage : PopupPage
     {
-        public static BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList<TabBarItemModel>), typeof(ControlTabBar), null, BindingMode.TwoWay);
-        public static BindableProperty ItemsSelectedProperty = BindableProperty.Create(nameof(ItemSelected), typeof(object), typeof(ControlTabBar), null, BindingMode.TwoWay);
+        public static BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList<TabBarItemModel>), typeof(CategoryPage), null, BindingMode.TwoWay);
+        public static BindableProperty ItemsSelectedProperty = BindableProperty.Create(nameof(ItemSelected), typeof(object), typeof(CategoryPage), null, BindingMode.TwoWay);
         public IList<TabBarItemModel> ItemsSource
         {
             get { return (IList<TabBarItemModel>)GetValue(ItemsSourceProperty); }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using SmartNews.Models;
 using SmartNews.ViewModels;
 using Xamarin.Forms;
 
@@ -75,13 +76,5 @@ namespace SmartNews.Views
             ScrollBar.ScrollToAsync(senderObj, ScrollToPosition.Center, animate);
             OnTabBarClicked?.Invoke(this, e);
         }
-    }
-    public class TabBarItemModel
-    {
-        public string TitleBar { get; set; }
-        public string Url { get; set; }
-        public string UrlImages { get; set; }
-        public Color ItemColor { get; set; }
-        public bool IsSelected { get; set; }
     }
 }
