@@ -78,7 +78,7 @@
                         SearchButtonPressed="OnSearchButtonPressed"/>
             <ImageButton Source="settingHome.png" WidthRequest="25" Clicked="OnSettingButtonPressed" VerticalOptions="Center" Margin="0,0,10,0"/>
         </StackLayout>
-        <tabview:ControlTabBar x:Name="TabBar" ItemsSource="{Binding ItemTabBar}" ItemSelected="{Binding SelectedItem}"/>
+        <tabview:ControlTabBar x:Name="TabBar" ItemsSource="{Binding ItemCategory}" ItemSelected="{Binding SelectedItem}"/>
         <ListView x:Name="listView" BackgroundColor="{DynamicResource backgroundColor}"
                             ItemsSource="{Binding Items}"
                             IsPullToRefreshEnabled="True"

@@ -1,7 +1,4 @@
 ﻿using SmartNews.ViewModels;
-using Syncfusion.DataSource.Extensions;
-using Syncfusion.ListView.XForms;
-using Syncfusion.ListView.XForms.Control.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,8 +12,6 @@ namespace SmartNews.Views
     public partial class SettingTabView : ContentPage
     {
         private RssItemViewModel viewModel = new RssItemViewModel();
-        VisualContainer container;
-        ExtendedScrollView scrollview;
         double scrollOffet;
         double previousOffset;
 
@@ -26,10 +21,6 @@ namespace SmartNews.Views
             BindingContext = viewModel;
             UpdateSettingItem();
             viewModel.heightImages = 150;
-            this.listView.DragDropController.UpdateSource = true;
-            container = listView.GetVisualContainer();
-            scrollview = listView.GetScrollView();
-            scrollview.Scrolled += Scrollview_Scrolled;
         }
 
         private void Scrollview_Scrolled(object sender, ScrolledEventArgs e)
@@ -45,7 +36,7 @@ namespace SmartNews.Views
 				if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
 				{
 					viewModel.heightImages -= scrollY * 0.75;
-                    listView.ScrollTo(viewModel.ItemTabBar[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
+                    //listView.ScrollTo(viewModel.ItemTabBar[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
                 }
 			}
 			else
@@ -61,17 +52,9 @@ namespace SmartNews.Views
             if (checkToTop)
             {
                 checkToTop = false;
-                listView.ScrollTo(viewModel.ItemTabBar[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
+                //listView.ScrollTo(viewModel.ItemTabBar[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
             }
             previousOffset = scrollY;
-        }
-
-        private void ListView_ItemDragging(object sender, ItemDraggingEventArgs e)
-        {
-            if (e.Action == DragAction.Drop)
-            {
-                viewModel.ItemTabBar.MoveTo(1, 5);
-            }
         }
 
         public void UpdateSettingItem()

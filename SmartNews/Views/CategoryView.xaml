@@ -23,7 +23,7 @@
                        BackgroundColor="OrangeRed"
                        AbsoluteLayout.LayoutFlags="PositionProportional"
                        AbsoluteLayout.LayoutBounds="1,0,AutoSize,AutoSize">
-                <Label     Text="5"
+                <Label     Text="{Binding NotificationNumber}"
                            TextColor="White"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand"/>

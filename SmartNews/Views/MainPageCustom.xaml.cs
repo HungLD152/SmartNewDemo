@@ -46,7 +46,7 @@ namespace SmartNews.Views
             viewModel.LoadRssFeed();
         }
 
-        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (args.SelectedItem != null)
             {

@@ -42,43 +42,32 @@ namespace SmartNews.Views
                         item.OnCategoryItemClicked += Item_OnCategoryItemClicked;
                         ContainerLeft.Children.Add(item);
                     }
-                    foreach (var dataright in ItemSourceRight)
-                    {
-                        var item = new CategoryView { BindingContext = dataright };
-                        item.OnCategoryItemClicked += Item_OnCategoryItemClicked;
-                        ContainerRight.Children.Add(item);
-                    }
+                foreach (var dataright in ItemSourceRight)
+                {
+                    var item = new CategoryView { BindingContext = dataright };
+                    item.OnCategoryItemClicked += Item_OnCategoryItemClicked;
+                    ContainerRight.Children.Add(item);
+                }
             }
             if (propertyName == ItemsSelectedProperty.PropertyName)
             {
 
             }
         }
-        private void Item_OnCategoryItemClicked(object sender, string e)
+
+        private void Item_OnCategoryItemClicked(object sender, object e)
         {
-            PageCategory.Title = e.ToString();
-            //Console.WriteLine("Item_OnCategoryItemClicked: " + e.ToString());
-            //var senderObj = (CategoryView)sender;
-            //foreach (var itemLeft in ContainerLeft.Children)
-            //{
-            //    (itemLeft.BindingContext as TabBarItemModel).IsSelected = false;
-            //    senderObj.BackgroundColor = Color.White;
-            //}
-            //foreach (var itemRight in ContainerRight.Children)
-            //{
-            //    (itemRight.BindingContext as TabBarItemModel).IsSelected = false;
-            //    senderObj.BackgroundColor = Color.White;
-            //}
-            //(senderObj.BindingContext as TabBarItemModel).IsSelected = true;
-            //if ((senderObj.BindingContext as TabBarItemModel).IsSelected)
-            //{
-            //    senderObj.BackgroundColor = Color.Red;
-            //}
+            var itemCategory = (TabBarItemModel)e;
+            PageCategory.Title = itemCategory.TitleBar;
+            ControlTabBar control = new ControlTabBar();
+            control.AddItem(itemCategory.ListCategory);
         }
+
         private async void CloseClick(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
         }
+
         public CategoryPage()
         {
             InitializeComponent();

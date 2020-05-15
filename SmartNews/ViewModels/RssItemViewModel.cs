@@ -24,6 +24,7 @@ namespace SmartNews.ViewModels
         public string Parameter { get; set; }
         public string searchText { get; set; }
         public double heightImages { get; set; }
+        public bool CheckMenuItem { get; set; }
         public ObservableCollection<RSSFeedItem> Items { get; set; } = new ObservableCollection<RSSFeedItem>();
         public ObservableCollection<TabBarItemModel> ItemTabBar => GetTabBarItemModel();
         public ObservableCollection<TabBarItemModel> ItemCategory { get; set; }
@@ -42,7 +43,7 @@ namespace SmartNews.ViewModels
                 });
             GetDataTabItem();
         }
-
+        // Get data from DataTabItem.json file
         public void GetDataTabItem()
         {
             var data = LoadResourceText.GetJsonData("DataTabItem.json");

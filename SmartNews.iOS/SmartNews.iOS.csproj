@@ -131,6 +131,10 @@
     <BundleResource Include="Resources\UTM Diana.ttf" />
     <BundleResource Include="Resources\UTM Sarah.ttf" />
     <BundleResource Include="Resources\settingHome.png" />
+    <BundleResource Include="Resources\24h.png" />
+    <BundleResource Include="Resources\cafebiz.jpg" />
+    <BundleResource Include="Resources\gamek.png" />
+    <BundleResource Include="Resources\tinhte.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

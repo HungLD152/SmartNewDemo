@@ -6,6 +6,7 @@
     <StackLayout>
         <Grid HorizontalOptions="FillAndExpand">
             <StackLayout x:Name="Container" Orientation="Horizontal" Spacing="0"/>
+            <!--<StackLayout x:Name="ContainerCategory" Orientation="Horizontal" Spacing="0" IsVisible="{Binding CheckMenuItem}"/>-->
         </Grid>
         <StackLayout x:Name="BottomColor" HeightRequest="4"/>
     </StackLayout>

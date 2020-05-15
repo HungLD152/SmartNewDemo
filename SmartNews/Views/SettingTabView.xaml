@@ -12,30 +12,31 @@
             <Image x:Name="Images" Source="Images.jpg" HorizontalOptions="Center" WidthRequest="{Binding heightImages}" HeightRequest="{Binding heightImages}"/>
         </StackLayout>
         <StackLayout>
-            <syncfusion:SfListView x:Name="listView"
+            <ListView x:Name="listView"
+                                SelectedItem=""
                                 ItemsSource="{Binding ItemTabBar}"
-                                BackgroundColor="#FFE8E8EC"
-                                DragStartMode="OnHold, OnDragIndicator"
-                                ItemSize="60">
-                <syncfusion:SfListView.ItemTemplate>
+                                BackgroundColor="#FFE8E8EC">
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
-                            <Grid.ColumnDefinitions>
-                                <!--<ColumnDefinition Width="*" />-->
-                                <ColumnDefinition Width="10" />
-                            </Grid.ColumnDefinitions>
-                            <Label x:Name="textLabel" Text="{Binding TitleBar}" Grid.Column="1" FontSize="15" TextColor="#333333" />
-                            <syncfusion:DragIndicatorView Grid.Column="2" ListView="{x:Reference listView}"
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <!--<ColumnDefinition Width="*" />-->
+                                    <ColumnDefinition Width="10" />
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="textLabel" Text="{Binding TitleBar}" Grid.Column="1" FontSize="15" TextColor="#333333" />
+                                <syncfusion:DragIndicatorView Grid.Column="2" ListView="{x:Reference listView}"
                                 HorizontalOptions="EndAndExpand" 
                                 VerticalOptions="Center">
-                                <Grid Padding="5, 10, 5, 10">
-                                    <Image Source="DragIndicator.png" />
-                                </Grid>
-                            </syncfusion:DragIndicatorView>
-                        </Grid>
+                                    <Grid Padding="5, 10, 5, 10">
+                                        <Image Source="DragIndicator.png" />
+                                    </Grid>
+                                </syncfusion:DragIndicatorView>
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
+                </ListView.ItemTemplate>
+            </ListView>
             <Label Text="Hide TabItem"/>
             <Switch x:Name="ShowTabItem" IsToggled="False" Toggled="OnToggled" HorizontalOptions="StartAndExpand"/>
         </StackLayout>

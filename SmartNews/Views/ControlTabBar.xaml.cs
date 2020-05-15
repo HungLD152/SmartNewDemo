@@ -11,8 +11,7 @@ namespace SmartNews.Views
 {
     public partial class ControlTabBar : ScrollView
     {
-        public string TitleBar { get; set; }
-        public string Parameter { get; set; }
+        private RssItemViewModel viewModel = new RssItemViewModel();
         private TabBarItemModel selectedItem;
         public TabBarItemModel SelectedItem { get { return selectedItem; } set { selectedItem = value; OnPropertyChanged("SelectedItem"); } }
         public event EventHandler<string> OnTabBarClicked;
@@ -52,6 +51,19 @@ namespace SmartNews.Views
             {
 
             }
+        }
+
+        public void AddItem(List<TabBarItemModel> lstItems)
+        {
+            viewModel.CheckMenuItem = false;
+            Container.Children.Clear();
+            if (lstItems?.Count > 0)
+                foreach (var data in lstItems)
+                {
+                    var item = new TabItem { BindingContext = data };
+                    item.OnTabItemClicked += Item_OnTabItemClicked;
+                    Container.Children.Add(item);
+                }
         }
 
         private void Item_OnTabItemClicked(object sender, string e)

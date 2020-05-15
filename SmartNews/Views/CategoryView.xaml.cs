@@ -7,14 +7,14 @@ namespace SmartNews.Views
 {
     public partial class CategoryView : StackLayout
     {
-        public event EventHandler<string> OnCategoryItemClicked;
+        public event EventHandler<object> OnCategoryItemClicked;
         public CategoryView()
         {
             InitializeComponent();
         }
         private void OnCategoryTapped(object sender, EventArgs e)
         {
-            OnCategoryItemClicked?.Invoke(this, (BindingContext as TabBarItemModel).TitleBar);
+            OnCategoryItemClicked?.Invoke(this, (BindingContext as TabBarItemModel));
         }
     }
 }
