@@ -3,25 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:effects = "clr-namespace:SmartNews.Utils.Effects"
              xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="Setting TabItem"
              x:Class="SmartNews.Views.SettingTabView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Order="Primary" Text="Edit" Priority="0" Clicked="Edit_Clicked" Command="{Binding EditCommand}"/>
+    </ContentPage.ToolbarItems>
     <StackLayout>
-        <StackLayout x:Name="layoutHeader" HeightRequest="{Binding heightImages}" MinimumHeightRequest="50">
-            <Image x:Name="Images" Source="Images.jpg" HorizontalOptions="Center" WidthRequest="{Binding heightImages}" HeightRequest="{Binding heightImages}"/>
-        </StackLayout>
+        <CarouselView ItemsSource="{Binding ItemCategory}" HeightRequest="80" x:Name="CarouselViewer">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:Name="layoutHeader" HeightRequest="{Binding heightImages}" MinimumHeightRequest="50">
+                        <Image x:Name="Images" Source="{Binding UrlImages}" HorizontalOptions="Center" WidthRequest="{Binding heightImages}" HeightRequest="{Binding heightImages}"/>
+                        <Label Text="{Binding TitleBar}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
         <StackLayout>
             <ListView x:Name="listView"
-                                SelectedItem=""
+                                SeparatorVisibility="None" 
                                 ItemsSource="{Binding ItemTabBar}"
-                                BackgroundColor="#FFE8E8EC">
+                                IsPullToRefreshEnabled="false"
+                                IsGroupingEnabled="false"
+                                effects:Sorting.IsSortable="{Binding AllowOrdering}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <!--<ViewCell>
                             <Grid Padding="10">
                                 <Grid.ColumnDefinitions>
-                                    <!--<ColumnDefinition Width="*" />-->
+                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="10" />
                                 </Grid.ColumnDefinitions>
                                 <Label x:Name="textLabel" Text="{Binding TitleBar}" Grid.Column="1" FontSize="15" TextColor="#333333" />
@@ -33,6 +47,29 @@
                                     </Grid>
                                 </syncfusion:DragIndicatorView>
                             </Grid>
+                        </ViewCell>-->
+                        <ViewCell>
+                            <ContentView>
+                                <Grid  Margin="10" BackgroundColor="White">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="75" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Column="1" Text="{Binding TabPosition}" FontSize="30" VerticalTextAlignment="Center" />
+                                    <StackLayout Grid.Column="2" VerticalOptions="Center">
+                                        <Label Text="{Binding TitleBar}" FontSize="Large" FontAttributes="Bold" />
+                                        <!--<Label Text="Position" FontSize="Small" TextColor="Accent" />-->
+                                    </StackLayout>
+                                    <Grid.Effects>
+                                        <effects:ViewShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Gray">
+                                            <!--							<effects:ViewShadowEffect.Color>
+								<OnPlatform x:TypeArguments="Color" iOS="Gray" Android="White" WinPhone="Red" />
+							</effects:ViewShadowEffect.Color>-->
+                                        </effects:ViewShadowEffect>
+                                    </Grid.Effects>
+                                </Grid>
+                            </ContentView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

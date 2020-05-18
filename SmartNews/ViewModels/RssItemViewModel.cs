@@ -19,15 +19,29 @@ namespace SmartNews.ViewModels
 {
     public class RssItemViewModel : BaseViewModel
     {
-
         public string Url { get; set; }
         public string Parameter { get; set; }
         public string searchText { get; set; }
         public double heightImages { get; set; }
         public bool CheckMenuItem { get; set; }
         public ObservableCollection<RSSFeedItem> Items { get; set; } = new ObservableCollection<RSSFeedItem>();
-        public ObservableCollection<TabBarItemModel> ItemTabBar => GetTabBarItemModel();
+        public ObservableListCollection<TabBarItemModel> ItemTabBar => GetTabBarItemModel();
         public ObservableCollection<TabBarItemModel> ItemCategory { get; set; }
+        private Command _editCommand;
+
+        private Command _updateCommand;
+        private bool _allowOrdering;
+        public bool AllowOrdering
+        {
+            get
+            {
+                return _allowOrdering;
+            }
+            set
+            {
+                SetProperty(ref _allowOrdering, value);
+            }
+        }
         bool isRefreshing;
 
         public RssItemViewModel()
@@ -42,6 +56,16 @@ namespace SmartNews.ViewModels
                     return !IsRefreshing;
                 });
             GetDataTabItem();
+            _editCommand = new Command(() => { AllowOrdering = !AllowOrdering; });
+            //_updateCommand = new Command(async () => await UpdatePlayers());
+            ItemTabBar.OrderChanged += (sender, e) =>
+            {
+                int jersey = 1;
+                foreach (var item in ItemTabBar)
+                {
+                    item.TabPosition = jersey++;
+                }
+            };
         }
         // Get data from DataTabItem.json file
         public void GetDataTabItem()
@@ -51,7 +75,7 @@ namespace SmartNews.ViewModels
             ItemCategory = new ObservableCollection<TabBarItemModel>(result);
         }
 
-        public ObservableCollection<TabBarItemModel> GetTabBarItemModel()
+        public ObservableListCollection<TabBarItemModel> GetTabBarItemModel()
         {
             var list = new List<TabBarItemModel>();
             list.Add(new TabBarItemModel()
@@ -59,56 +83,64 @@ namespace SmartNews.ViewModels
                 TitleBar = "24h.com",
                 Url = "https://cdn.24h.com.vn/upload/rss/trangchu24h.rss",
                 UrlImages = "icon-setting.png",
-                ItemColor = Color.LightCoral
+                ItemColor = Color.LightCoral,
+                TabPosition = 1
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Tinhte",
                 Url = "https://tinhte.vn/rss",
                 UrlImages = "settingHome.png",
-                ItemColor = Color.Orange
+                ItemColor = Color.Orange,
+                TabPosition = 2
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Thanhnien",
                 Url = "https://thanhnien.vn/rss/home.rss",
                 UrlImages = "icon-setting.png",
-                ItemColor = Color.Turquoise
+                ItemColor = Color.Turquoise,
+                TabPosition = 3
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Trithuc",
                 Url = "https://trithucvn.net/feed",
                 UrlImages = "settingHome.png",
-                ItemColor = Color.LightSkyBlue
+                ItemColor = Color.LightSkyBlue,
+                TabPosition = 4
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Cafebiz-cn",
                 Url = "https://cafebiz.vn/cong-nghe.rss",
                 UrlImages = "icon-setting.png",
-                ItemColor = Color.MediumOrchid
+                ItemColor = Color.MediumOrchid,
+                TabPosition = 5
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Cafebiz-kd",
                 Url = "https://cafebiz.vn/cau-chuyen-kinh-doanh.rss",
                 UrlImages = "settingHome.png",
-                ItemColor = Color.LightCoral
+                ItemColor = Color.LightCoral,
+                TabPosition = 6
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Vnreview",
                 Url = "https://vnreview.vn/feed/-/rss/home",
                 UrlImages = "icon-setting.png",
-                ItemColor = Color.LightSkyBlue
+                ItemColor = Color.LightSkyBlue,
+                TabPosition = 7
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Soha",
                 Url = "https://soha.vn/kinh-doanh.rss",
                 UrlImages = "settingHome.png",
-                ItemColor = Color.Orange
+                ItemColor = Color.Orange,
+                TabPosition = 8
             });
             //add--
             list.Add(new TabBarItemModel()
@@ -116,17 +148,19 @@ namespace SmartNews.ViewModels
                 TitleBar = "Tinhte",
                 Url = "https://tinhte.vn/rss",
                 UrlImages = "icon-setting.png",
-                ItemColor = Color.Orange
+                ItemColor = Color.Orange,
+                TabPosition = 9
             });
             list.Add(new TabBarItemModel()
             {
                 TitleBar = "Thanhnien",
                 Url = "https://thanhnien.vn/rss/home.rss",
                 UrlImages = "settingHome.png",
-                ItemColor = Color.Turquoise
+                ItemColor = Color.Turquoise,
+                TabPosition = 10
             });
 
-            return list.ToObservableCollection();
+            return new ObservableListCollection<TabBarItemModel>(list);
         }
 
         #region property RefreshCommand
@@ -136,6 +170,21 @@ namespace SmartNews.ViewModels
         {
             set { SetProperty(ref isRefreshing, value); }
             get { return isRefreshing; }
+        }
+        public ICommand EditCommand
+        {
+            get
+            {
+                return _editCommand;
+            }
+        }
+
+        public ICommand UpdateCommand
+        {
+            get
+            {
+                return _updateCommand;
+            }
         }
         #endregion
         #region Load LoadRssFeed url rss

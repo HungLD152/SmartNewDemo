@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace SmartNews.Models
 {
-    public class TabBarItemModel
+    public class TabBarItemModel : BaseModel
     {
         public string TitleBar { get; set; }
         public string Url { get; set; }
@@ -12,6 +12,7 @@ namespace SmartNews.Models
         public Color ItemColor { get; set; }
         public bool IsSelected { get; set; }
         public int NotificationNumber { get; set; }
+        public int TabPosition { get; set; }
 
         public List<TabBarItemModel> ListCategory { get; set; }
     }   

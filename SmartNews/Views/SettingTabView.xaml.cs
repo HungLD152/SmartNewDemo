@@ -21,32 +21,41 @@ namespace SmartNews.Views
             BindingContext = viewModel;
             UpdateSettingItem();
             viewModel.heightImages = 150;
+            listView.BindingContextChanged += (sender, e) => {
+                var change = e;
+            };
+            Device.StartTimer(TimeSpan.FromSeconds(3), (Func<bool>)(() =>
+            {
+                CarouselViewer.Position = (CarouselViewer.Position + 1) % viewModel.ItemCategory.Count;
+
+                return true;
+            }));
         }
 
         private void Scrollview_Scrolled(object sender, ScrolledEventArgs e)
         {
-			double minHeight = 50;
-			double maxHeight = 150;
-			var scrollY = e.ScrollY;
+            double minHeight = 50;
+            double maxHeight = 150;
+            var scrollY = e.ScrollY;
             bool checkToTop = false;
-			if (scrollY == 0)
-				return;
-			if (previousOffset >= scrollY)
-			{
-				if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
-				{
-					viewModel.heightImages -= scrollY * 0.75;
+            if (scrollY == 0)
+                return;
+            if (previousOffset >= scrollY)
+            {
+                if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
+                {
+                    viewModel.heightImages -= scrollY * 0.75;
                     //listView.ScrollTo(viewModel.ItemTabBar[0], Syncfusion.ListView.XForms.ScrollToPosition.Start, true);
                 }
-			}
-			else
-			{
+            }
+            else
+            {
                 checkToTop = true;
                 //Down direction 
                 if (viewModel.heightImages - scrollY >= minHeight && viewModel.heightImages - scrollY <= maxHeight)
-				{
-					viewModel.heightImages -= scrollY * 0.75;
-                }       
+                {
+                    viewModel.heightImages -= scrollY * 0.75;
+                }
                 //int index = listView.DataSource.DisplayItems.IndexOf(viewModel.ItemTabBar[0]);
             }
             if (checkToTop)
@@ -69,6 +78,16 @@ namespace SmartNews.Views
         {
             Application.Current.Properties["TabItem"] = ShowTabItem.IsToggled;
             Application.Current.SavePropertiesAsync();
+        }
+
+        void Edit_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        void Update_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

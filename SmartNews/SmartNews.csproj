@@ -20,6 +20,7 @@
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="Utils\Storage\" />
+    <Folder Include="Utils\Effects\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing.Common">
