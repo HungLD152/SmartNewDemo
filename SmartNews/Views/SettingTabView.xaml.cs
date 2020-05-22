@@ -21,7 +21,8 @@ namespace SmartNews.Views
             BindingContext = viewModel;
             UpdateSettingItem();
             viewModel.heightImages = 150;
-            listView.BindingContextChanged += (sender, e) => {
+            listView.BindingContextChanged += (sender, e) =>
+            {
                 var change = e;
             };
             Device.StartTimer(TimeSpan.FromSeconds(3), (Func<bool>)(() =>

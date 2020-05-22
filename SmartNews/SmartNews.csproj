@@ -21,6 +21,7 @@
     <Folder Include="Utils\" />
     <Folder Include="Utils\Storage\" />
     <Folder Include="Utils\Effects\" />
+    <Folder Include="Services\Interface\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing.Common">
@@ -29,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Utils\Storage\DataTabItem.json" />
+    <EmbeddedResource Include="Utils\Storage\DataTabItemSort.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\SettingTabView.xaml">
@@ -37,5 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Utils\Storage\DataTabItem.json" />
+    <None Remove="Utils\Storage\DataTabItem %28copy%29.json" />
   </ItemGroup>
 </Project>

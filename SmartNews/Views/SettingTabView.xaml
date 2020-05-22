@@ -9,9 +9,9 @@
              mc:Ignorable="d"
              Title="Setting TabItem"
              x:Class="SmartNews.Views.SettingTabView">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Name="MenuItem1" Order="Primary" Text="Edit" Priority="0" Clicked="Edit_Clicked" Command="{Binding EditCommand}"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <StackLayout>
         <CarouselView ItemsSource="{Binding ItemCategory}" HeightRequest="80" x:Name="CarouselViewer">
             <CarouselView.ItemTemplate>
@@ -63,9 +63,9 @@
                                     </StackLayout>
                                     <Grid.Effects>
                                         <effects:ViewShadowEffect Radius="5" DistanceX="5" DistanceY="5" Color="Gray">
-                                            <!--							<effects:ViewShadowEffect.Color>
-								<OnPlatform x:TypeArguments="Color" iOS="Gray" Android="White" WinPhone="Red" />
-							</effects:ViewShadowEffect.Color>-->
+                                            <effects:ViewShadowEffect.Color>
+                                                <OnPlatform x:TypeArguments="Color" iOS="Gray" Android="White"/>
+                                            </effects:ViewShadowEffect.Color>
                                         </effects:ViewShadowEffect>
                                     </Grid.Effects>
                                 </Grid>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using SmartNews.Models;
 using Xamarin.Forms;
 
 namespace SmartNews.Utils.Effects
@@ -37,16 +39,24 @@ namespace SmartNews.Utils.Effects
 
         static void OnIsSortableChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var view = bindable as ListView;
-            if (view == null)
+            try
             {
-                return;
-            }
+                var view = bindable as ListView;
+                if (view == null)
+                {
+                    return;
+                }
 
-            if (!view.Effects.Any(item => item is ListViewSortableEffect))
-            {
-                view.Effects.Add(new ListViewSortableEffect());
+                if (!view.Effects.Any(item => item is ListViewSortableEffect))
+                {
+                    view.Effects.Add(new ListViewSortableEffect());
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("OnIsSortableChanged: ", ex);
+            }
+            
         }
 
         class ListViewSortableEffect : RoutingEffect

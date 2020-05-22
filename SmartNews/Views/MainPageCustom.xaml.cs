@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SmartNews.Models;
+using SmartNews.Utils;
 using SmartNews.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -38,6 +39,12 @@ namespace SmartNews.Views
                 }
             }
             TabBar.OnTabBarClicked += TabBar_OnTabItemClicked;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoadResourceText.LoadJsonData("DataTabItemSort.json");
         }
 
         private void TabBar_OnTabItemClicked(object sender, string e)
@@ -119,4 +126,3 @@ namespace SmartNews.Views
         }
     }
 }
-

@@ -4,15 +4,12 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using System.Xml;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using SmartNews.Models;
 using SmartNews.Utils;
-using SmartNews.Views;
 using Xamarin.Forms;
 
 namespace SmartNews.ViewModels
@@ -25,11 +22,10 @@ namespace SmartNews.ViewModels
         public double heightImages { get; set; }
         public bool CheckMenuItem { get; set; }
         public ObservableCollection<RSSFeedItem> Items { get; set; } = new ObservableCollection<RSSFeedItem>();
-        public ObservableListCollection<TabBarItemModel> ItemTabBar => GetTabBarItemModel();
+        //public ObservableListCollection<TabBarItemModel> ItemTabBar => GetTabBarItemModel();
+        public ObservableListCollection<TabBarItemModel> ItemTabBar { get; set; }
         public ObservableCollection<TabBarItemModel> ItemCategory { get; set; }
-        private Command _editCommand;
-
-        private Command _updateCommand;
+        //private Command _editCommand;
         private bool _allowOrdering;
         public bool AllowOrdering
         {
@@ -56,8 +52,9 @@ namespace SmartNews.ViewModels
                     return !IsRefreshing;
                 });
             GetDataTabItem();
-            _editCommand = new Command(() => { AllowOrdering = !AllowOrdering; });
-            //_updateCommand = new Command(async () => await UpdatePlayers());
+            GetTabItemFromJson();
+            AllowOrdering = true;
+            //_editCommand = new Command(() => { AllowOrdering = !AllowOrdering; });
             ItemTabBar.OrderChanged += (sender, e) =>
             {
                 int jersey = 1;
@@ -73,6 +70,20 @@ namespace SmartNews.ViewModels
             var data = LoadResourceText.GetJsonData("DataTabItem.json");
             var result = JsonConvert.DeserializeObject<List<TabBarItemModel>>(data);
             ItemCategory = new ObservableCollection<TabBarItemModel>(result);
+        }
+
+        public void GetTabItemFromJson()
+        {
+            try
+            {
+                var data = LoadResourceText.LoadJsonData("DataTabItemSort.json");
+                var result = JsonConvert.DeserializeObject<List<TabBarItemModel>>(data);
+                ItemTabBar = new ObservableListCollection<TabBarItemModel>(result);
+            }
+            catch
+            {
+            }
+           
         }
 
         public ObservableListCollection<TabBarItemModel> GetTabBarItemModel()
@@ -163,7 +174,7 @@ namespace SmartNews.ViewModels
             return new ObservableListCollection<TabBarItemModel>(list);
         }
 
-        #region property RefreshCommand
+        #region property command
         public ICommand RefreshCommand { private set; get; }
 
         public bool IsRefreshing
@@ -171,21 +182,14 @@ namespace SmartNews.ViewModels
             set { SetProperty(ref isRefreshing, value); }
             get { return isRefreshing; }
         }
-        public ICommand EditCommand
-        {
-            get
-            {
-                return _editCommand;
-            }
-        }
+        //public ICommand EditCommand
+        //{
+        //    get
+        //    {
+        //        return _editCommand;
+        //    }
+        //}
 
-        public ICommand UpdateCommand
-        {
-            get
-            {
-                return _updateCommand;
-            }
-        }
         #endregion
         #region Load LoadRssFeed url rss
         public void LoadRssFeed()

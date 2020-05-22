@@ -9,6 +9,7 @@ namespace SmartNews.Models
         public string TitleBar { get; set; }
         public string Url { get; set; }
         public string UrlImages { get; set; }
+        public string ColorName { get; set; }
         public Color ItemColor { get; set; }
         public bool IsSelected { get; set; }
         public int NotificationNumber { get; set; }

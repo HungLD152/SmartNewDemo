@@ -136,7 +136,7 @@ namespace SmartNews.Utils
             Items.RemoveAt(priorIndex);
 
             OrderChanged?.Invoke(this, EventArgs.Empty);
-
+            LoadResourceText.SaveJsonData(Items, "DataTabItemSort.json");
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Move, changedItem, newIndex, oldIndex));
         }
 

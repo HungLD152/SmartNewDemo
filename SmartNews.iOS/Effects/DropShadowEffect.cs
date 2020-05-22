@@ -45,22 +45,33 @@ namespace SmartNews.iOS.Effects
 
         protected override void OnDetached()
         {
-            try
-            {
-                TableView.Source = (TableView.Source as ListSortableTableSource).OriginalSource;
-                TableView.SetEditing(false, true);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //try
+            //{
+            //    if (TableView == null)
+            //    {
+            //        return;
+            //    }
+            //    TableView.Source = (TableView.Source as ListSortableTableSource).OriginalSource;
+            //    TableView.SetEditing(false, true);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
         }
 
         protected override void OnElementPropertyChanged(System.ComponentModel.PropertyChangedEventArgs args)
         {
-            if (args.PropertyName == Sorting.IsSortableProperty.PropertyName)
+            try
             {
-                TableView.SetEditing(Sorting.GetIsSortable(Element), true);
+                if (args.PropertyName == Sorting.IsSortableProperty.PropertyName)
+                {
+                    TableView.SetEditing(Sorting.GetIsSortable(Element), true);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
@@ -119,47 +130,48 @@ namespace SmartNews.iOS.Effects
                     var insertAt = destinationIndexPath.Row;
 
                     orderableList.ChangeOrdinal(deleteAt, insertAt);
-                    //orderableList.OrderChanged
+                    var tabItem = orderableList;
+                    LoadResourceText.SaveJsonData(tabItem, "DataTabItemSort.json");
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            
+
         }
 
 
 
-        //public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, Foundation.NSIndexPath indexPath)
-        //{
-        //    switch (editingStyle)
-        //    {
-        //        case UITableViewCellEditingStyle.Delete:
-        //            break;
-        //        case UITableViewCellEditingStyle.None:
-        //            break;
-        //    }
-        //}
+        public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, Foundation.NSIndexPath indexPath)
+        {
+            switch (editingStyle)
+            {
+                case UITableViewCellEditingStyle.Delete:
+                    break;
+                case UITableViewCellEditingStyle.None:
+                    break;
+            }
+        }
 
-        //public override NSIndexPath CustomizeMoveTarget(UITableView tableView, NSIndexPath sourceIndexPath, NSIndexPath proposedIndexPath)
-        //{
-        //    var numRows = tableView.NumberOfRowsInSection(0);
-        //    if (proposedIndexPath.Row >= numRows)
-        //        return NSIndexPath.FromRowSection(numRows, 0);
-        //    else
-        //        return proposedIndexPath;
-        //}
+        public override NSIndexPath CustomizeMoveTarget(UITableView tableView, NSIndexPath sourceIndexPath, NSIndexPath proposedIndexPath)
+        {
+            var numRows = tableView.NumberOfRowsInSection(0);
+            if (proposedIndexPath.Row >= numRows)
+                return NSIndexPath.FromRowSection(numRows, 0);
+            else
+                return proposedIndexPath;
+        }
 
-        //public override void DraggingEnded(UIScrollView scrollView, bool willDecelerate)
-        //{
-        //    _originalSource.DraggingEnded(scrollView, willDecelerate);
-        //}
+        public override void DraggingEnded(UIScrollView scrollView, bool willDecelerate)
+        {
+            _originalSource.DraggingEnded(scrollView, willDecelerate);
+        }
 
-        //public override void DraggingStarted(UIScrollView scrollView)
-        //{
-        //    _originalSource.DraggingStarted(scrollView);
-        //}
+        public override void DraggingStarted(UIScrollView scrollView)
+        {
+            _originalSource.DraggingStarted(scrollView);
+        }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
