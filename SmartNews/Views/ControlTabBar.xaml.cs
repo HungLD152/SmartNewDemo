@@ -80,8 +80,9 @@ namespace SmartNews.Views
                 senderObj.Margin = new Thickness(0, 5, 0, 0);
                 senderObj.Padding = new Thickness(0, 0, 0, -5);
                 //senderObj.HeightRequest = 50;
-                BottomColor.BackgroundColor = (senderObj.BindingContext as TabBarItemModel).ItemColor;
-                BottomColor.Margin = new Thickness(0, -3, 0, 3);
+                var converter = new ColorTypeConverter();
+                BottomColor.BackgroundColor = (Xamarin.Forms.Color)converter.ConvertFromInvariantString((senderObj.BindingContext as TabBarItemModel).ColorName);
+                BottomColor.Margin = new Thickness(0, -2, 0, 2);
             }
             //scroll position
             bool animate = true;

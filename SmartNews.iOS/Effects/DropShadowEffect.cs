@@ -277,7 +277,6 @@ namespace SmartNews.iOS.Effects
                 default:
                 case 5:
                     return Color.Yellow;
-
             }
         }
     }

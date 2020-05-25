@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </StackLayout.Resources>
     <!--{Binding ItemColor}-->
-    <yummy:PancakeView BackgroundColor="Red" CornerRadius="4,4,0,0" IsClippedToBounds="true">
+    <yummy:PancakeView BackgroundColor="{Binding ColorName}" CornerRadius="4,4,0,0" IsClippedToBounds="true">
         <StackLayout HorizontalOptions="FillAndExpand" Padding="4,2,4,4">
             <Label Text="{Binding TitleBar}" Style="{StaticResource buttonCss}" Padding="8,0,8,3">
                 <Label.GestureRecognizers>

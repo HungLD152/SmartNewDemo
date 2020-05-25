@@ -19,7 +19,6 @@ namespace SmartNews.Views
         {
             InitializeComponent();
             BindingContext = viewModel;
-            UpdateSettingItem();
             viewModel.heightImages = 150;
             listView.BindingContextChanged += (sender, e) =>
             {
@@ -67,18 +66,18 @@ namespace SmartNews.Views
             previousOffset = scrollY;
         }
 
-        public void UpdateSettingItem()
-        {
-            if (Application.Current.Properties.ContainsKey("TabItem"))
-            {
-                ShowTabItem.IsToggled = Convert.ToBoolean(Application.Current.Properties["TabItem"].ToString());
-            }
-        }
+        //public void UpdateSettingItem()
+        //{
+        //    if (Application.Current.Properties.ContainsKey("TabItem"))
+        //    {
+        //        showTabItem.IsToggled = Convert.ToBoolean(Application.Current.Properties["TabItem"].ToString());
+        //    }
+        //}
 
-        void OnToggled(object sender, ToggledEventArgs e)
+        void OnCheckedClick(object sender, ToggledEventArgs e)
         {
-            Application.Current.Properties["TabItem"] = ShowTabItem.IsToggled;
-            Application.Current.SavePropertiesAsync();
+            //Applicatisson.Current.Properties["TabItem"] = showTabItem.IsToggled;
+            //Application.Current.SavePropertiesAsync();
         }
 
         void Edit_Clicked(object sender, EventArgs e)
