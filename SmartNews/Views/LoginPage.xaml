@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customControls= "clr-namespace:SmartNews.Models.CustomControl"
+             mc:Ignorable="d"
+             x:Class="SmartNews.Views.LoginPage">
+    <ContentPage.Content>
+        <AbsoluteLayout Padding="10">
+            <Label Text="Sign In"
+                   TextColor="OrangeRed"
+                   Margin="{OnPlatform Android='0', iOS='0,50,0,0'}"
+                   FontAttributes="Bold"
+                   FontSize="Title"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.5,0"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center">
+            </Label>
+            <StackLayout Orientation="Vertical"
+                      AbsoluteLayout.LayoutFlags="PositionProportional"
+                      AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize"
+                      Padding="30"
+                      Spacing="15">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <customControls:CustomFrame>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="icon_user.png" HorizontalOptions="Start"/>
+                            <customControls:CustomEntry x:Name="Email"
+                                                    Grid.Column="2"
+                                                    Text="{Binding Email}"
+                                                    Placeholder="Email"
+                                                    Keyboard="Email"/>
+                        </Grid>
+                    </customControls:CustomFrame>
+                    <customControls:CustomFrame>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Margin="5,0,0,0" Source="icon_Password.png" HorizontalOptions="Start"/>
+                            <customControls:CustomEntry x:Name="Password"
+                                                    Grid.Column="2"
+                                                    Grid.ColumnSpan="2"
+                                                    Text="{Binding Password}"
+                                                    Placeholder="Password"
+                                                    IsPassword="{Binding IsPassword}">
+                                <!--<customControls:CustomEntry.Behaviors>
+                                    <behavior:EventToCommandBehavior EventName="TextChanged" Command="{Binding TextChangedCommand}"/>
+                                </customControls:CustomEntry.Behaviors>-->
+                            </customControls:CustomEntry>
+                            <Image Grid.Column="3" IsVisible="{Binding IsVisiableShowPass}" Source="icon_showPassword.png" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowPasswordCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Grid.Column="3" IsVisible="{Binding IsVisiableHiddenPass}" Source="icon_HiddenPassword.png" HorizontalOptions="End">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding HiddenPasswordCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </customControls:CustomFrame>
+                </StackLayout>
+                <Button Command="{Binding SubmitCommand}" Text="Log in" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" />
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IsChecked}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Color"
+                                                Value="Blue" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="IsChecked">
+                                    <VisualState.Setters>
+                                        <Setter Property="Color"
+                                                Value="Red" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!--<CheckBox.Behaviors>
+                            <behavior:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding CheckedCommand}"/>
+                        </CheckBox.Behaviors>-->
+                    </CheckBox>
+                    <Label Text="Remember Me" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                          HeightRequest="50"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center">
+                    <ImageButton Source="login_facebook.png" BackgroundColor="Transparent" Command="{Binding FacebookCommand}" />
+                    <ImageButton Source="login_gmail.png" BackgroundColor="Transparent" Command="{Binding GoogleCommand}" />
+                    <ImageButton Source="login_microsoft.png" BackgroundColor="Transparent" Command="{Binding MicrosoftCommand}" />
+                    <ImageButton Source="login_telegram.png" BackgroundColor="Transparent" Command="{Binding TelegramCommand}" />
+                    <ImageButton Source="login_twitter.png" BackgroundColor="Transparent" Command="{Binding TwitterCommand}" />
+                </StackLayout>
+                <customControls:CustomButton Text="Do not have an account? Register Now!" 
+                                             TextColor="WhiteSmoke"
+                                             Command="{Binding NavigationRegisterCommand}"
+                                             HorizontalOptions="CenterAndExpand" 
+                                             FontSize="Default">
+                </customControls:CustomButton>
+            </StackLayout>
+            <ActivityIndicator IsRunning="{Binding Busy}"
+                               IsVisible="{Binding Busy}"
+                               Color="Blue"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"/>
+            <Frame CornerRadius="30"
+                   Opacity="0.5"
+                   BackgroundColor="#EEEEEE"
+                   IsVisible="{Binding FrmIsVisiable}"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize">
+                <Label Text="{Binding AlertMessage}" 
+                       TextColor="Black" 
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       LineBreakMode="CharacterWrap"/>
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
