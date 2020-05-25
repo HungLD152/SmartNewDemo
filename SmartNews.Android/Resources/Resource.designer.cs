@@ -10685,7 +10685,7 @@ namespace SmartNews.Droid
 		{
 			
 			// aapt resource value: 0x7F070006
-			public const int 24h = 2131165190;
+			//public const int 24h = 2131165190;
 			
 			// aapt resource value: 0x7F070007
 			public const int abc_ab_share_pack_mtrl_alpha = 2131165191;
@@ -10938,7 +10938,10 @@ namespace SmartNews.Droid
 			
 			// aapt resource value: 0x7F07005A
 			public const int abc_vector_test = 2131165274;
-			
+
+			// aapt resource value: 0x7F070077
+			public const int blue_resct = 2131165303;
+
 			// aapt resource value: 0x7F07005B
 			public const int Avatar1 = 2131165275;
 			

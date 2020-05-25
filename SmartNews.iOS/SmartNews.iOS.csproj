@@ -60,6 +60,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
+    <Compile Include="CustomRenderer\CustomFrameRenderer.cs" />
     <Compile Include="iOSNotificationManager.cs" />
     <Compile Include="iOSNotificationReceiver.cs" />
     <Compile Include="Main.cs" />
@@ -171,7 +174,5 @@
   <ItemGroup>
     <BundleResource Include="Resources\Images.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Effects\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
