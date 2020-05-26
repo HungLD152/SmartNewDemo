@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="dodgerblue"
+             xmlns:customControls= "clr-namespace:SmartNews.Models.CustomControl"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SmartNews.Views.RegisterPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="customControls:CustomFrame">
+                <Setter Property="Padding" Value="{OnPlatform Android='10,0,0,0', iOS='20,10,10,10'}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="OutlineColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout Padding="0,10,0,0">
+            <Label Text="Register"
+                   TextColor="Red"
+                   Margin="{OnPlatform Android='0', iOS='0,50,0,0'}"
+                   FontAttributes="Bold"
+                   FontSize="Title"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.5,0"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center">
+            </Label>
+            <StackLayout Orientation="Vertical"
+                      AbsoluteLayout.LayoutFlags="PositionProportional"
+                      AbsoluteLayout.LayoutBounds="0.5,0.5"
+                      Padding="30"
+                      Spacing="{OnPlatform Android=0.1, iOS=15}">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <customControls:CustomFrame>
+                        <customControls:CustomEntry x:Name="FirstName"
+                                                    Text="{Binding FirstName}"
+                                                    Placeholder="First Name">
+                        </customControls:CustomEntry>
+                    </customControls:CustomFrame>
+                    <customControls:CustomFrame>
+                        <customControls:CustomEntry x:Name="LastName"
+                                                    Text="{Binding LastName}"
+                                                    Placeholder="Last Name"/>
+                    </customControls:CustomFrame>
+                    <customControls:CustomFrame>
+                        <customControls:CustomEntry x:Name="Email"
+                                                    Text="{Binding Email}"
+                                                    Placeholder="Email"
+                                                    Keyboard="Email"/>
+                    </customControls:CustomFrame>
+                    <customControls:CustomFrame>
+                        <customControls:CustomEntry x:Name="Password"
+                                                    Text="{Binding Password}"
+                                                    Placeholder="Password"
+                                                    IsPassword="True"/>
+                    </customControls:CustomFrame>
+                    <customControls:CustomFrame>
+                        <customControls:CustomEntry x:Name="RePassword"
+                                                    Text="{Binding RetypePassword}"
+                                                    Placeholder="Retype password"
+                                                    IsPassword="True"/>
+                    </customControls:CustomFrame>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Gender" TextColor="Blue"/>
+                    <StackLayout Orientation="Horizontal" Spacing="50">
+                        <RadioButton Text="Male"/>
+                        <RadioButton Text="Female"/>
+                        <RadioButton Text="Other"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Date of Birth" TextColor="Blue"/>
+                    <DatePicker x:Name="Datepicker" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <Button Command="{Binding SubmitCommand}" Text="{Binding BtnName}" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" />
+                <StackLayout Orientation="Horizontal"
+                          HeightRequest="50"
+                          HorizontalOptions="CenterAndExpand"
+                          VerticalOptions="CenterAndExpand"
+                          BindableLayout.ItemsSource="{Binding ListIconOauth2}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <ImageButton Source="{Binding}" BackgroundColor="Transparent"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator IsRunning="{Binding Busy}"
+                               IsVisible="{Binding Busy}"
+                               Color="Blue"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"/>
+            <Frame CornerRadius="30"
+                   IsVisible="{Binding FrmIsVisiable}"
+                   Opacity="0.5"
+                   BackgroundColor="#EEEEEE"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize">
+                <Label Text="{Binding AlertMessage}" 
+                       TextColor="Black" 
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand"
+                       LineBreakMode="CharacterWrap"/>
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

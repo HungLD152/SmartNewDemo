@@ -5,7 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:customControls= "clr-namespace:SmartNews.Models.CustomControl"
              mc:Ignorable="d"
+             BackgroundColor="LightCoral"
              x:Class="SmartNews.Views.LoginPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="customControls:CustomFrame">
+                <Setter Property="Padding" Value="{OnPlatform Android='10,0,0,0', iOS='20,10,10,10'}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="OutlineColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout Padding="10">
             <Label Text="Sign In"
@@ -23,8 +34,8 @@
                       AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize"
                       Padding="30"
                       Spacing="15">
-                <StackLayout Orientation="Vertical" Spacing="10">
-                    <customControls:CustomFrame>
+                <StackLayout Spacing="10">
+                    <customControls:CustomFrame CornerRadius="20">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -38,7 +49,7 @@
                                                     Keyboard="Email"/>
                         </Grid>
                     </customControls:CustomFrame>
-                    <customControls:CustomFrame>
+                    <customControls:CustomFrame CornerRadius="20">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -51,10 +62,8 @@
                                                     Grid.ColumnSpan="2"
                                                     Text="{Binding Password}"
                                                     Placeholder="Password"
+                                                    TextChanged="HandleTextChanged"
                                                     IsPassword="{Binding IsPassword}">
-                                <!--<customControls:CustomEntry.Behaviors>
-                                    <behavior:EventToCommandBehavior EventName="TextChanged" Command="{Binding TextChangedCommand}"/>
-                                </customControls:CustomEntry.Behaviors>-->
                             </customControls:CustomEntry>
                             <Image Grid.Column="3" IsVisible="{Binding IsVisiableShowPass}" Source="icon_showPassword.png" HorizontalOptions="End">
                                 <Image.GestureRecognizers>
@@ -69,11 +78,11 @@
                         </Grid>
                     </customControls:CustomFrame>
                 </StackLayout>
-                <Button Command="{Binding SubmitCommand}" Text="Log in" TextColor="White"  
-                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#088da5" />
+                <Button Command="{Binding SubmitCommand}" CornerRadius="10" Text="Log in" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Medium" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="lightseagreen" />
                 <StackLayout Orientation="Horizontal">
-                    <CheckBox IsChecked="{Binding IsChecked}">
+                    <CheckBox IsChecked="{Binding IsChecked}" CheckedChanged="HandleChecked">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
@@ -90,21 +99,16 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <!--<CheckBox.Behaviors>
-                            <behavior:EventToCommandBehavior EventName="CheckedChanged" Command="{Binding CheckedCommand}"/>
-                        </CheckBox.Behaviors>-->
                     </CheckBox>
                     <Label Text="Remember Me" VerticalOptions="Center" HorizontalOptions="Center"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal"
-                          HeightRequest="50"
+                          HeightRequest="20"
                           HorizontalOptions="Center"
                           VerticalOptions="Center">
                     <ImageButton Source="login_facebook.png" BackgroundColor="Transparent" Command="{Binding FacebookCommand}" />
                     <ImageButton Source="login_gmail.png" BackgroundColor="Transparent" Command="{Binding GoogleCommand}" />
-                    <ImageButton Source="login_microsoft.png" BackgroundColor="Transparent" Command="{Binding MicrosoftCommand}" />
-                    <ImageButton Source="login_telegram.png" BackgroundColor="Transparent" Command="{Binding TelegramCommand}" />
-                    <ImageButton Source="login_twitter.png" BackgroundColor="Transparent" Command="{Binding TwitterCommand}" />
+                    <!--<ImageButton Source="login_microsoft.png" BackgroundColor="Transparent" Command="{Binding MicrosoftCommand}" />-->
                 </StackLayout>
                 <customControls:CustomButton Text="Do not have an account? Register Now!" 
                                              TextColor="WhiteSmoke"

@@ -33,8 +33,6 @@ namespace SmartNews.ViewModels
         public ICommand MicrosoftCommand { get; set; }
         public ICommand TelegramCommand { get; set; }
         public ICommand TwitterCommand { get; set; }
-        public ICommand CheckedCommand { get; set; }
-        public ICommand TextChangedCommand { get; set; }
         public ICommand ShowPasswordCommand { get; set; }
         public ICommand HiddenPasswordCommand { get; set; }
         public ICommand SubmitCommand { get; set; }
@@ -48,11 +46,14 @@ namespace SmartNews.ViewModels
             MicrosoftCommand = new Command(async () => await HandleLoginSocial("Microsoft"));
             TelegramCommand = new Command(async () => await HandleLoginSocial("Telegram"));
             TwitterCommand = new Command(async () => await HandleLoginSocial("Twitter"));
-
+            NavigationRegisterCommand = new Command((async) =>
+            {
+                HandleRegisterForm();
+            });
             ShowPasswordCommand = new Command(HandleShowPassword);
             HiddenPasswordCommand = new Command(HandleHiddenPassword);
 
-            SubmitCommand = new Command(async () =>
+            SubmitCommand = new Command((async) =>
             {
                 HandleSubmit();
             });
@@ -70,6 +71,11 @@ namespace SmartNews.ViewModels
             IsPassword = true;
             IsVisiableShowPass = true;
             IsVisiableHiddenPass = false;
+        }
+
+        private async void HandleRegisterForm()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
 
         private async void HandleSubmit()
@@ -99,7 +105,7 @@ namespace SmartNews.ViewModels
                     await Task.Delay(3000);
                     FrmIsVisiable = false;
                 }
-                else if (Email != "truong.lavan@vti.com" || Password != "723516")
+                else if (Email != "hung.ledinh@vti.com.vn" || Password != "1234560")
                 {
                     FrmIsVisiable = true;
                     AlertMessage = ConstantMessage.WrongUserOrPass;

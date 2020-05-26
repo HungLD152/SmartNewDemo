@@ -15,9 +15,9 @@ namespace SmartNews.Droid.CustomRenderer
         protected override void OnElementChanged(ElementChangedEventArgs<Frame> e)
         {
             base.OnElementChanged(e);
-#pragma warning disable CS0618
-            this.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.tinhte));
-#pragma warning restore CS0618
+//#pragma warning disable CS0618
+//            this.SetBackgroundDrawable(Resources.GetDrawable(Resource.Drawable.tin_24h));
+//#pragma warning restore CS0618
         }
     }
 }
