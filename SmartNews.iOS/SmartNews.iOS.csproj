@@ -174,5 +174,34 @@
   <ItemGroup>
     <BundleResource Include="Resources\Images.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\login_facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\login_gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\login_microsoft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\login_telegram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\login_twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_HiddenPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_Password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_showPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_signout.png" />
+  </ItemGroup>
 </Project>

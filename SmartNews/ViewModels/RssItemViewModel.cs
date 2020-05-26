@@ -55,14 +55,14 @@ namespace SmartNews.ViewModels
             GetTabItemFromJson();
             AllowOrdering = true;
             //_editCommand = new Command(() => { AllowOrdering = !AllowOrdering; });
-            ItemTabBar.OrderChanged += (sender, e) =>
-            {
-                int jersey = 1;
-                foreach (var item in ItemTabBar)
-                {
-                    item.TabPosition = jersey++;
-                }
-            };
+            //ItemTabBar.OrderChanged += (sender, e) =>
+            //{
+            //    int jersey = 1;
+            //    foreach (var item in ItemTabBar)
+            //    {
+            //        item.TabPosition = jersey++;
+            //    }
+            //};
         }
         // Get data from DataTabItem.json file
         public void GetDataTabItem()
