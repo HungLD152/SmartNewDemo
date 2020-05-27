@@ -3,70 +3,200 @@
         "TitleBar": "24h-Tin trong ngày",
         "Url": "https://cdn.24h.com.vn/upload/rss/tintuctrongngay.rss",
         "UrlImages": "24h.png",
-        "IsSelected": false,
-        "NotificationNumber": 5
-    },
-    {
-        "TitleBar": "CafeBiz",
-        "Url": "https://cafebiz.vn/trang-chu.rss",
-        "UrlImages": "cafebiz.jpg",
-        "IsSelected": false,
-        "NotificationNumber": 2
-    },
-    {
-        "TitleBar": "CafeBiz - Thời sự",
-        "Url": "https://cafebiz.vn/thoi-su.rss",
-        "UrlImages": "cafebiz.jpg",
-        "IsSelected": false,
-        "NotificationNumber": 4
-    },
-    {
-        "TitleBar": "CafeBiz - Kinh tế",
-        "Url": "https://cafebiz.vn/kinh-te-vi-mo.rss",
-        "UrlImages": "cafebiz.jpg",
-        "IsSelected": false,
-        "NotificationNumber": 2
-    },
-    {
-        "TitleBar": "CafeBiz- Kinh doanh",
-        "Url": "https://cafebiz.vn/cau-chuyen-kinh-doanh.rss",
-        "UrlImages": "cafebiz.jpg",
-        "IsSelected": false,
-        "NotificationNumber": 5
-    },
-    {
-        "TitleBar": "CafeBiz - Sống",
-        "Url": "https://cafebiz.vn/song.rss",
-        "UrlImages": "cafebiz.jpg",
-        "IsSelected": false,
-        "NotificationNumber": 6
+        "ColorName": "Color.LightCoral",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 5,
+        "TabPosition": 1,
+        "ListCategory": null
     },
     {
         "TitleBar": "Tinh tế",
         "Url": "https://tinhte.vn/rss",
         "UrlImages": "tinhte.png",
-        "IsSelected": false,
-        "NotificationNumber": 8
+        "ColorName": "Color.Orange",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 8,
+        "TabPosition": 2,
+        "ListCategory": null
+    },
+    {
+        "TitleBar": "CafeBiz",
+        "Url": "https://cafebiz.vn/trang-chu.rss",
+        "UrlImages": "cafebiz.jpg",
+        "ColorName": "Color.Turquoise",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 2,
+        "TabPosition": 3,
+        "ListCategory": null
+    },
+    {
+        "TitleBar": "CafeBiz- Kinh doanh",
+        "Url": "https://cafebiz.vn/cau-chuyen-kinh-doanh.rss",
+        "UrlImages": "cafebiz.jpg",
+        "ColorName": "Color.LightSkyBlue",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 5,
+        "TabPosition": 4,
+        "ListCategory": null
+    },
+    {
+        "TitleBar": "CafeBiz - Thời sự",
+        "Url": "https://cafebiz.vn/thoi-su.rss",
+        "UrlImages": "cafebiz.jpg",
+        "ColorName": "Color.MediumOrchid",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 4,
+        "TabPosition": 5,
+        "ListCategory": null
+    },
+    {
+        "TitleBar": "CafeBiz - Sống",
+        "Url": "https://cafebiz.vn/song.rss",
+        "UrlImages": "cafebiz.jpg",
+        "ColorName": "Color.LightCoral",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 6,
+        "TabPosition": 6,
+        "ListCategory": null
+    },
+    {
+        "TitleBar": "CafeBiz - Kinh tế",
+        "Url": "https://cafebiz.vn/kinh-te-vi-mo.rss",
+        "UrlImages": "cafebiz.jpg",
+        "ColorName": "Color.LightSkyBlue",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 2,
+        "TabPosition": 7,
+        "ListCategory": null
     },
     {
         "TitleBar": "Gamek",
         "Url": "https://gamek.vn/trang-chu.rss",
         "UrlImages": "gamek.png",
-        "IsSelected": false,
-        "NotificationNumber": 10
+        "ColorName": "Color.Orange",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 10,
+        "TabPosition": 9,
+        "ListCategory": null
     },
     {
         "TitleBar": "Gamek-MMO",
         "Url": "https://gamek.vn/rss.chn",
         "UrlImages": "gamek.png",
-        "IsSelected": false,
-        "NotificationNumber": 1
+        "ColorName": "Color.Turquoise",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 1,
+        "TabPosition": 8,
+        "ListCategory": null
     },
     {
         "TitleBar": "Gamek-Mobile",
         "Url": "https://gamek.vn/mobile-social.rss",
         "UrlImages": "gamek.png",
-        "IsSelected": false,
-        "NotificationNumber": 2
+        "ColorName": "Color.Orange",
+        "ItemColor": {
+            "IsDefault": true,
+            "A": 0.0,
+            "R": 0.0,
+            "G": 0.0,
+            "B": 0.0,
+            "Hue": 0.0,
+            "Saturation": 0.0,
+            "Luminosity": 0.0
+        },
+        "IsSelected": true,
+        "NotificationNumber": 2,
+        "TabPosition": 10,
+        "ListCategory": null
     }
 ]
